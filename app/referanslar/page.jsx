@@ -4,7 +4,7 @@ import { caseStudies, testimonials } from "../site-data";
 export const metadata = {
   title: "Referanslar",
   description:
-    "TaşıtPOS ile çalışan oto galerilerin sanal POS, kart taksit ve online tahsilat deneyimleri.",
+    "TaşıtPOS'a güvenen oto galerilerle büyüyoruz. Sanal POS ve ödeme dijitalleşme deneyimlerini keşfedin.",
 };
 
 export default function ReferencesPage() {
@@ -12,15 +12,15 @@ export default function ReferencesPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="Referanslar"
-        title="Galerilerin ortak hedefi: müşteriye taksit sunup satışı büyütmek."
-        text="Kredi kartına taksit ve güvenli sanal POS ile tahsilat süreci daha pratik ilerler."
+        title="Güvenle büyüdüğümüz iş ortaklarımız."
+        text="TaşıtPOS ile kredi kartına taksit sunan ve tahsilat sürecini dijitalleştiren oto galerilerle büyüyoruz."
       />
 
       <section className="section">
         <div className="container">
           <SectionHeader
             eyebrow="Deneyimler"
-            title="Taksit sunan galeri satışta daha güçlü konuşur."
+            title="Müşterilerimiz ne diyor?"
           />
           <div className="testimonial-grid">
             {testimonials.map((item) => (
@@ -59,7 +59,7 @@ export default function ReferencesPage() {
         <div className="container">
           <SectionHeader
             eyebrow="Kullanım Senaryoları"
-            title="Galerilerin en çok kullandığı POS akışları."
+            title="Başarı hikayelerinin ortak noktası: güvenli tahsilat."
           />
           <div className="case-grid">
             {caseStudies.map((item) => (
@@ -80,7 +80,7 @@ export default function ReferencesPage() {
         />
       </section>
 
-      <CTA title="Müşterine taksit sunmak için hemen başla." />
+      <CTA title="Siz de güvenle büyüyen galeriler arasına katılın." />
     </SiteFrame>
   );
 }

@@ -23,51 +23,51 @@ export const navigation = [
 ];
 
 export const stats = [
-  { value: "12 aya", label: "Tüm kredi kartlarına taksit" },
-  { value: "Hızlı", label: "Sanal POS başvuru süreci" },
-  { value: "%100", label: "Güvenli ödeme altyapısı" },
-  { value: "7/24", label: "Uzman ekibimiz yanında" },
+  { value: "1000+", label: "Aktif galeri hedefi" },
+  { value: "12 aya", label: "Esnek taksit imkanı" },
+  { value: "Aynı gün", label: "Kurulum ve başvuru desteği" },
+  { value: "TCMB", label: "Lisanslı güvenli altyapı" },
 ];
 
 export const services = [
   {
-    title: "Müşterine Taksit Sun",
-    text: "Tüm kredi kartlarına taksit imkanıyla müşterinin ödeme kararını kolaylaştır.",
+    title: "Sanal POS Entegrasyonu",
+    text: "Fiziksel POS cihazına gerek kalmadan kredi kartıyla güvenli tahsilat alın.",
   },
   {
-    title: "Satışını Büyüt",
-    text: "Peşin ödeme engeline takılmadan daha fazla müşteriye satış fırsatı sun.",
+    title: "Taksitli Satış Altyapısı",
+    text: "12 aya kadar taksit imkanıyla araç satışlarınızı büyütün.",
   },
   {
-    title: "Sen Sat, Tahsilatı Biz Çözelim",
-    text: "Kapora, peşinat veya araç bedeli için güvenli ödeme linkiyle tahsilat al.",
+    title: "Online Tahsilat",
+    text: "Tek link ile müşterinize ödeme gönderin, kapora ve araç bedelini online alın.",
   },
   {
-    title: "Vade Farkı Müşteriye",
-    text: "Taksitli ödemede oluşan vade farkı müşteriye yansıtılır, satışın korunur.",
+    title: "Taksit Yönetimi",
+    text: "Vade farkını müşteriye yansıtın, taksitli satışı daha net yönetin.",
   },
   {
-    title: "Güvenli Ödeme",
-    text: "256 Bit SSL ile güvenli altyapı üzerinden kartlı ödeme alırsın.",
+    title: "Güvenli Ödeme Altyapısı",
+    text: "TCMB lisanslı, SSL korumalı ödeme altyapısıyla güven verin.",
   },
   {
-    title: "Hemen Kullanmaya Başla",
-    text: "Başvurunu yap, sanal POS sürecin hızlıca başlasın, satışta bekleme.",
+    title: "7/24 Destek",
+    text: "Uzman ekibimiz başvuru, kurulum ve kullanım sürecinde yanınızdadır.",
   },
 ];
 
 export const processSteps = [
   {
-    title: "Hemen başvur",
-    text: "Galeri bilgilerini paylaş, sanal POS başvuru sürecin hızlıca başlasın.",
+    title: "Başvurunuzu alın",
+    text: "Galeri bilgilerinizi paylaşın, sanal POS başvuru sürecinizi başlatalım.",
   },
   {
-    title: "Taksit seçeneklerin açılsın",
-    text: "Kredi kartına taksit ve ödeme linki altyapısı satış akışına hazır hale gelsin.",
+    title: "Kurulumu tamamlayın",
+    text: "Ödeme altyapınız hazırlanır, taksit ve ödeme linki seçenekleri açılır.",
   },
   {
-    title: "Ödeme al",
-    text: "Müşterine taksit sun, ödeme linkini gönder, tahsilatı güvenle tamamla.",
+    title: "Tahsilata başlayın",
+    text: "Müşterinize taksit sunun, ödeme linki gönderin ve güvenli tahsilat alın.",
   },
 ];
 

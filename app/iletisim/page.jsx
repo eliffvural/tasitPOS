@@ -33,7 +33,7 @@ const mapSrcDoc = `
 export const metadata = {
   title: "İletişim",
   description:
-    "TaşıtPOS sanal POS başvurusu, kart taksit ve galeri ödeme çözümleri iletişim bilgileri.",
+    "TaşıtPOS ile iletişime geçin; sanal POS kurulumu, destek veya iş birliği talepleriniz için bize ulaşın.",
 };
 
 export default function ContactPage() {
@@ -41,8 +41,8 @@ export default function ContactPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="İletişim"
-        title="Hemen başla, müşterine taksit sun."
-        text="Sanal POS, kredi kartına taksit ve ödeme linki için ekibimizle hemen görüş."
+        title="Bizimle iletişime geçin."
+        text="Sanal POS kurulumu, teknik destek veya iş birliği talepleriniz için formu doldurun ya da bizi arayın."
       />
 
       <section className="section">

@@ -3,7 +3,7 @@ import { CTA, PageIntro, ProcessList, SectionHeader, ServiceGrid, SiteFrame } fr
 export const metadata = {
   title: "Hizmetlerimiz",
   description:
-    "Oto galeriler için sanal POS, karta taksit, ödeme linki ve hızlı başvuru hizmetleri.",
+    "Sanal POS, 12 aya kadar taksit yönetimi, online tahsilat ve destek. Oto galeriniz için dijital ödeme çözümleri.",
 };
 
 export default function ServicesPage() {
@@ -11,8 +11,8 @@ export default function ServicesPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="Hizmetlerimiz"
-        title="Sanal POS, kredi kartına taksit ve güvenli ödeme linki."
-        text="Müşterine taksit sun, kapora veya araç bedelini online al, satışını pratik tamamla."
+        title="Sanal POS ve taksit çözümleri."
+        text="Oto galerinizdeki ödeme süreçlerini dijitalleştirin. Taksitli satış, online tahsilat ve güvenli ödeme linki tek akışta."
       />
 
       <section className="section">
@@ -25,7 +25,7 @@ export default function ServicesPage() {
         <div className="container">
           <SectionHeader
             eyebrow="Ödeme Akışı"
-            title="Satış anında ihtiyacın olan POS imkanları."
+            title="Bayinize özel dijital çözümler."
           />
           <div className="module-grid">
             <article>
@@ -51,9 +51,9 @@ export default function ServicesPage() {
         <div className="container dark-grid">
           <SectionHeader
             align="left"
-            eyebrow="Nasıl işler?"
-            title="Başvur, aktive ol, ödeme al."
-            text="Galeriniz başvurur, sanal POS altyapısı hazırlanır, müşteriye kartla ödeme alternatifi sunulur."
+            eyebrow="Nasıl Çalışır?"
+            title="Başvurun, kurulum tamamlansın, tahsilata başlayın."
+            text="Sanal POS başvurunuz alınır, ödeme altyapınız hazırlanır ve müşterinize kredi kartıyla ödeme alternatifi sunulur."
           />
           <ProcessList />
         </div>
@@ -65,12 +65,11 @@ export default function ServicesPage() {
             <SectionHeader
               align="left"
               eyebrow="Sanal POS"
-              title="Öncelik hızlı ve güvenli kartlı tahsilattır."
+              title="Fiziksel POS cihazına gerek kalmadan tahsilat alın."
             />
             <p>
-              TaşıtPOS, araç satışında kartla tahsilat almayı kolaylaştıran
-              sanal POS çözümüdür. Müşterine taksit sunar, ödeme linkiyle
-              tahsilatı güvenle tamamlarsın.
+              Tek link ile müşterinize ödeme gönderin, 12 aya kadar taksit
+              seçeneği sunun ve araç satış tahsilatını güvenle tamamlayın.
             </p>
             <ul className="check-list">
               <li>Kredi kartına taksitli ödeme alma</li>
@@ -86,7 +85,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CTA />
+      <CTA title="Bugün başvurun, yarın tahsilat alın." />
     </SiteFrame>
   );
 }

@@ -3,7 +3,7 @@ import { CTA, Metrics, PageIntro, SectionHeader, SiteFrame } from "../components
 export const metadata = {
   title: "Hakkımızda",
   description:
-    "TaşıtPOS'un oto galeriler için sunduğu güvenli ödeme ve sanal POS yaklaşımı.",
+    "TaşıtPOS, oto galeriler için TCMB lisanslı güvenli ödeme altyapısıyla sanal POS ve taksit çözümleri sunar.",
 };
 
 export default function AboutPage() {
@@ -11,8 +11,8 @@ export default function AboutPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="Hakkımızda"
-        title="Galericiler için güvenli sanal POS çözümü."
-        text="Müşterine taksit sun, araç satış tahsilatını online al, satışını daha rahat büyüt."
+        title="Sektörün sesini dinledik, çözümü inşa ettik."
+        text="TaşıtPOS, oto galerilerin kredi kartına taksit sunması ve güvenli sanal POS ile tahsilat alması için geliştirildi."
       />
 
       <section className="section">
@@ -26,16 +26,16 @@ export default function AboutPage() {
             <SectionHeader
               align="left"
               eyebrow="Yaklaşım"
-              title="Kurgu basit: müşteri aracı seçer, galeri taksit sunar, ödeme alınır."
+              title="Sektörü bilen bir ortağın farkını yaşayın."
             />
             <p>
-              Müşteri uzakta olabilir, kapora vermek isteyebilir veya araç
-              bedelini kredi kartıyla ödemek isteyebilir. TaşıtPOS bu anlarda
-              pratik sanal POS altyapısı sağlar.
+              Oto galericiliğin dinamiklerini bilen ekibimiz, satış anında
+              ihtiyaç duyulan ödeme kolaylığını pratik bir sanal POS akışına
+              dönüştürür.
             </p>
             <p>
-              Öncelik net: hızlı başvuru, güvenli POS altyapısı ve müşteriye
-              kartla taksitli ödeme alternatifi.
+              Müşteri aracı seçer, galeri taksit sunar, ödeme güvenle alınır.
+              TaşıtPOS bu süreci hızlı, sade ve güvenli hale getirir.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
         <div className="container">
           <SectionHeader
             eyebrow="Çalışma Prensibi"
-            title="Sanal POS anlaşmasını galeri satış ritmine uygun sadeleştiririz."
+            title="Bugün başvurun, yarın tahsilat alın."
           />
           <div className="value-grid">
             <article>
@@ -78,7 +78,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CTA title="Sen sat, sanal POS başvurusunu birlikte başlatalım." />
+      <CTA title="Bugün başvurun, yarın tahsilat almaya başlayın." />
     </SiteFrame>
   );
 }

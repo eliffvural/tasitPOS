@@ -20,11 +20,11 @@ export default function Home() {
         />
         <div className="hero-overlay" />
         <div className="container hero-content">
-          <p className="eyebrow light">Galericiler için güvenli sanal POS çözümleri</p>
+          <p className="eyebrow light">Oto galerilere özel sanal POS çözümleri</p>
           <h1>TaşıtPOS</h1>
           <p>
-            Müşterine taksit sun, satışını büyüt. Sen sat, güvenli kartlı
-            tahsilatı TaşıtPOS ile kolayca çöz.
+            Oto galeriniz için güvenli ve hızlı sanal POS çözümleri. Taksitli
+            araç satışı yapın, müşterinize ödeme kolaylığı sunun.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={brand.registerUrl} target="_blank" rel="noreferrer">
@@ -47,23 +47,23 @@ export default function Home() {
         <div className="container">
           <div className="platform-grid">
             <div className="copy-stack platform-copy">
-              <p className="eyebrow">Platform</p>
-              <h2>Müşterine taksit sun, araç satışını daha kolay kapat.</h2>
+              <p className="eyebrow">Neden TaşıtPOS?</p>
+              <h2>Galerinizin ihtiyacını bilen ödeme ortağı.</h2>
               <p>
-                Araç almak isteyen müşteri için ödeme kolaylığı satışın en
-                kritik anıdır. TaşıtPOS ile kredi kartına taksit sunar, güvenli
-                sanal POS altyapısıyla tahsilat alırsın.
+                Oto galericiliğin dinamiklerini bilen ekibimiz, satış anında
+                ihtiyaç duyulan hızlı ve güvenli ödeme çözümlerini sade bir
+                akışta sunar.
               </p>
-              <h3>Sen sat, tahsilatı pratik şekilde tamamla.</h3>
+              <h3>Müşterine taksit sun, satış fırsatını kaçırma.</h3>
               <p>
-                Kapora, peşinat veya araç bedeli için ödeme linki gönder.
-                Taksitli ödemede oluşan vade farkını müşteriye yansıt, satışını
-                büyüt.
+                Aynı gün kurulum desteği, TCMB lisanslı güvenli ödeme altyapısı
+                ve 12 aya kadar taksit seçenekleriyle galerinize uygun sanal
+                POS akışı kurulur.
               </p>
               <div className="platform-points">
-                <span>Tüm kredi kartlarına 12 aya kadar taksit</span>
-                <span>Güvenli ödeme linkiyle hızlı tahsilat</span>
-                <span>Vade farkı müşteriye yansıtılır</span>
+                <span>Aynı gün kurulum, sıfır teknik yük</span>
+                <span>TCMB lisanslı güvenli ödeme altyapısı</span>
+                <span>12 aya kadar esnek taksit yönetimi</span>
               </div>
             </div>
 
@@ -89,8 +89,9 @@ export default function Home() {
       <section className="section soft">
         <div className="container">
           <SectionHeader
-            eyebrow="Hizmetler"
-            title="Daha çok müşteri, daha çok satış için pratik POS imkanları."
+            eyebrow="Hizmetlerimiz"
+            title="Bayinize özel dijital ödeme çözümleri."
+            text="Oto galerinizdeki ödeme süreçlerini uçtan uca dijitalleştiriyoruz. Hızlı kurulum, güvenli tahsilat ve kesintisiz destek."
           />
           <ServiceGrid />
         </div>
@@ -101,9 +102,9 @@ export default function Home() {
           <div className="dark-grid">
             <SectionHeader
               align="left"
-              eyebrow="Kurulum"
-              title="Hemen başla, kısa sürede tahsilat almaya başla."
-              text="Başvuru süreci sade ilerler. Sanal POS altyapın hazırlanır, müşterine taksit sunar ve güvenli ödeme alırsın."
+              eyebrow="Nasıl Çalışır?"
+              title="Başvurudan tahsilata kadar sade bir süreç."
+              text="Galeriniz başvurusunu tamamlar, sanal POS altyapısı hazırlanır ve müşterinize kredi kartıyla ödeme alternatifi sunulur."
             />
             <ProcessList />
           </div>
@@ -113,8 +114,8 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <SectionHeader
-            eyebrow="Bayi Deneyimleri"
-            title="Taksit imkanı satış konuşmasını güçlendirir."
+            eyebrow="Müşteri Yorumları"
+            title="Galeriler TaşıtPOS ile tahsilat süreçlerini kolaylaştırıyor."
           />
           <div className="testimonial-grid">
             {testimonials.map((item) => (
