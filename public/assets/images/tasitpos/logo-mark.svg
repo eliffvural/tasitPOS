@@ -1,0 +1,11 @@
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">TaşıtPOS logo işareti</title>
+  <desc id="desc">Mavi tonlarda kart, yol ve ödeme onayından oluşan kurumsal TaşıtPOS işareti.</desc>
+  <rect width="72" height="72" rx="18" fill="#17345F"/>
+  <rect x="14" y="17" width="44" height="32" rx="8" fill="#F8FBFF"/>
+  <path d="M19 31H34" stroke="#17345F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M19 39H28" stroke="#8EA4BE" stroke-width="4" stroke-linecap="round"/>
+  <path d="M43 36L47 40L54 31" stroke="#12A6A6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16 55C27 51 33 44 37 32C40.5 21.5 46.5 17 58 16" stroke="#12A6A6" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="52" cy="20" r="4" fill="#9DE7E2"/>
+</svg>
