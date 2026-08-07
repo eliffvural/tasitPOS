@@ -166,8 +166,9 @@ export function PageIntro({ eyebrow, title, text }) {
 export function Metrics({ compact = false }) {
   return (
     <div className={compact ? "metrics compact" : "metrics"}>
-      {stats.map((item) => (
+      {stats.map((item, index) => (
         <div className="metric" key={item.label}>
+          <small>{String(index + 1).padStart(2, "0")}</small>
           <strong>{item.value}</strong>
           <span>{item.label}</span>
         </div>
