@@ -68,14 +68,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section soft">
+      <section className="section soft services-showcase-section">
         <div className="container">
-          <SectionHeader
-            eyebrow="Hizmetlerimiz"
-            title="Bayinize özel dijital ödeme çözümleri."
-            text="Oto galerinizdeki ödeme süreçlerini uçtan uca dijitalleştiriyoruz. Hızlı kurulum, güvenli tahsilat ve kesintisiz destek."
-          />
+          <div className="services-showcase-head">
+            <div>
+              <p className="eyebrow">Hizmetlerimiz</p>
+              <h2>
+                Bayinize Özel Dijital <span>Çözümler</span>
+              </h2>
+              <p>
+                Oto galerinizdeki ödeme süreçlerini uçtan uca dijitalleştiriyoruz.
+                Aynı gün kurulum, kesintisiz destek.
+              </p>
+            </div>
+            <figure>
+              <img
+                src="/assets/images/tasitpos/dealer-consultation.png"
+                alt="Oto galeride satış ve ödeme görüşmesi"
+              />
+            </figure>
+          </div>
           <ServiceGrid />
+          <div className="services-showcase-action">
+            <a className="btn btn-primary" href="/iletisim">
+              Size Özel Teklif Al
+            </a>
+          </div>
         </div>
       </section>
 

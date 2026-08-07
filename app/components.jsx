@@ -276,9 +276,15 @@ export function ServiceGrid({ detailed = false }) {
     <div className={detailed ? "service-grid detailed" : "service-grid"}>
       {services.map((service, index) => (
         <article className="service-card" key={service.title}>
-          <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
-          <h3>{service.title}</h3>
-          <p>{service.text}</p>
+          <div className="service-card-media">
+            <img src={service.image} alt={`${service.title} görseli`} />
+            <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
+          </div>
+          <div className="service-card-body">
+            <span className={`service-icon service-icon-${service.icon}`} aria-hidden="true" />
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </div>
         </article>
       ))}
     </div>
