@@ -12,15 +12,15 @@ export default function ReferencesPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="Referanslar"
-        title="Oto galerilerin ortak ihtiyacı: müşteriye taksit sunup satışı büyütmek."
-        text="TaşıtPOS, araç satışında kredi kartına taksit ve güvenli sanal POS imkanıyla galerilerin tahsilat sürecini pratikleştirir."
+        title="Galerilerin ortak hedefi: müşteriye taksit sunup satışı büyütmek."
+        text="Kredi kartına taksit ve güvenli sanal POS ile tahsilat süreci daha pratik ilerler."
       />
 
       <section className="section">
         <div className="container">
           <SectionHeader
             eyebrow="Deneyimler"
-            title="Kart taksit sunabilen galerilerin satış görüşmesi güçlenir."
+            title="Taksit sunan galeri satışta daha güçlü konuşur."
           />
           <div className="testimonial-grid">
             {testimonials.map((item) => (
@@ -45,11 +45,11 @@ export default function ReferencesPage() {
             </div>
             <div>
               <strong>Satış masasına uygun</strong>
-              <span>Müşteriye taksit seçeneği sunulur, ödeme linkiyle tahsilat alınır.</span>
+              <span>Taksit sunulur, ödeme linkiyle tahsilat alınır.</span>
             </div>
             <div>
               <strong>Vade farkı netliği</strong>
-              <span>Taksit farkı müşteriye yansıtılarak galeri satışını korur.</span>
+              <span>Taksit farkı müşteriye yansır, satış korunur.</span>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ export default function ReferencesPage() {
         <div className="container">
           <SectionHeader
             eyebrow="Kullanım Senaryoları"
-            title="Galerilerin en çok ihtiyaç duyduğu sanal POS kullanım alanları."
+            title="Galerilerin en çok kullandığı POS akışları."
           />
           <div className="case-grid">
             {caseStudies.map((item) => (
@@ -80,7 +80,7 @@ export default function ReferencesPage() {
         />
       </section>
 
-      <CTA title="Sizin galeriniz için de kart taksit ve sanal POS akışını kuralım." />
+      <CTA title="Müşterine taksit sunmak için hemen başla." />
     </SiteFrame>
   );
 }

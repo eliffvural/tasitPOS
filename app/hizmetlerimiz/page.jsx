@@ -11,8 +11,8 @@ export default function ServicesPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="Hizmetlerimiz"
-        title="Oto galeriler için sanal POS ve kredi kartına taksit imkanı."
-        text="Müşterine taksit sun, kapora veya araç bedelini güvenli ödeme linkiyle al, satışını daha pratik tamamla."
+        title="Sanal POS, kredi kartına taksit ve güvenli ödeme linki."
+        text="Müşterine taksit sun, kapora veya araç bedelini online al, satışını pratik tamamla."
       />
 
       <section className="section">
@@ -25,23 +25,23 @@ export default function ServicesPage() {
         <div className="container">
           <SectionHeader
             eyebrow="Ödeme Akışı"
-            title="Satış anında ihtiyaç duyulan pratik POS imkanları."
+            title="Satış anında ihtiyacın olan POS imkanları."
           />
           <div className="module-grid">
             <article>
               <strong>Kart Taksit</strong>
               <h3>Müşterine taksit seçeneği sun</h3>
-              <p>Araç satışında ödeme kararını kolaylaştıran taksitli tahsilat imkanı.</p>
+              <p>Araç satışında karar aldıran en net ödeme kolaylığı.</p>
             </article>
             <article>
               <strong>Ödeme Linki</strong>
               <h3>Uzaktan ödeme al</h3>
-              <p>Kapora, peşinat veya kalan ödeme için müşteriye güvenli link gönderilir.</p>
+              <p>Kapora, peşinat veya kalan ödeme için güvenli link gönder.</p>
             </article>
             <article>
               <strong>Hızlı Başvuru</strong>
               <h3>Sanal POS sürecini başlat</h3>
-              <p>Galerinizin POS anlaşması için gerekli başvuru adımları sadeleştirilir.</p>
+              <p>POS anlaşması için gerekli başvuru adımları hızlı ilerler.</p>
             </article>
           </div>
         </div>
@@ -52,8 +52,8 @@ export default function ServicesPage() {
           <SectionHeader
             align="left"
             eyebrow="Nasıl işler?"
-            title="Sanal POS başvurusu hızlı, ödeme alma süreci pratiktir."
-            text="Galeriniz başvurusunu tamamlar, ödeme altyapısı aktif olur ve müşteriye kartla ödeme alternatifi sunulur."
+            title="Başvur, aktive ol, ödeme al."
+            text="Galeriniz başvurur, sanal POS altyapısı hazırlanır, müşteriye kartla ödeme alternatifi sunulur."
           />
           <ProcessList />
         </div>
@@ -65,12 +65,12 @@ export default function ServicesPage() {
             <SectionHeader
               align="left"
               eyebrow="Sanal POS"
-              title="Öncelik satış anında hızlı ve güvenli ödeme almaktır."
+              title="Öncelik hızlı ve güvenli kartlı tahsilattır."
             />
             <p>
               TaşıtPOS, araç satışında kartla tahsilat almayı kolaylaştıran
-              sanal POS çözümüdür. Galeriniz müşterisine taksit seçeneği
-              sunar, ödeme linkiyle tahsilatı güvenle tamamlar.
+              sanal POS çözümüdür. Müşterine taksit sunar, ödeme linkiyle
+              tahsilatı güvenle tamamlarsın.
             </p>
             <ul className="check-list">
               <li>Kredi kartına taksitli ödeme alma</li>

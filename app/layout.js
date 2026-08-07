@@ -7,7 +7,7 @@ export const metadata = {
     template: "%s | TaşıtPOS",
   },
   description:
-    "Oto galerileri için güvenli sanal POS, kredi kartına taksit ve online ödeme linki altyapısı.",
+    "Müşterine taksit sun, satışını büyüt. Oto galerileri için güvenli sanal POS ve online ödeme linki.",
   keywords: [
     "sanal pos",
     "oto galeri ödeme sistemi",
@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     title: "TaşıtPOS | Oto galerilere özel sanal POS",
     description:
-      "Galeriniz için güvenli sanal POS, hızlı ödeme linki ve kredi kartına taksit altyapısı.",
+      "Müşterine taksit sun, satışını büyüt. Güvenli sanal POS ve online ödeme linki.",
     url: "/",
     siteName: "TaşıtPOS",
     locale: "tr_TR",
@@ -36,7 +36,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "TaşıtPOS | Oto galerilere özel sanal POS",
     description:
-      "Oto galerileri için güvenli sanal POS ve kredi kartına taksit imkanı.",
+      "Müşterine taksit sun, satışını büyüt. Oto galerileri için sanal POS.",
     images: ["/assets/images/tasitpos/hero-payment.png"],
   },
 };

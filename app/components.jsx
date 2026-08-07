@@ -87,8 +87,8 @@ function Footer() {
         <div>
           <Logo />
           <p>
-            Oto galerileri için kredi kartına taksit, güvenli sanal POS ve
-            hızlı online tahsilat çözümü.
+            Müşterine taksit sun, satışını büyüt. Oto galerileri için güvenli
+            sanal POS ve hızlı online tahsilat çözümü.
           </p>
         </div>
         <div>
@@ -103,8 +103,8 @@ function Footer() {
           <h2>Hizmetler</h2>
           <span>Sanal POS</span>
           <span>Ödeme Linki</span>
-          <span>Karta Taksit</span>
-          <span>Hızlı Başvuru</span>
+          <span>12 Aya Taksit</span>
+          <span>Hemen Başla</span>
         </div>
         <div>
           <h2>İletişim</h2>
@@ -144,8 +144,8 @@ export function PageIntro({ eyebrow, title, text }) {
           <p>{text}</p>
           <div className="intro-badges" aria-label="Platform özellikleri">
             <span>TCMB lisanslı altyapı</span>
-            <span>Kredi kartına taksit</span>
-            <span>Online ödeme linki</span>
+            <span>12 aya taksit</span>
+            <span>Güvenli ödeme linki</span>
           </div>
         </div>
         <aside className="intro-visual" aria-label="Oto galeri ödeme deneyimi">
@@ -205,12 +205,12 @@ export function ProcessList() {
   );
 }
 
-export function CTA({ title = "Galeriniz için sanal POS başvurusunu bugün başlatalım." }) {
+export function CTA({ title = "Müşterine taksit sun, satışını büyüt." }) {
   return (
     <section className="cta-band">
       <div className="container cta-inner">
         <div>
-          <p className="eyebrow">Hızlı Başvuru</p>
+          <p className="eyebrow">Hemen Başla</p>
           <h2>{title}</h2>
         </div>
         <div className="cta-actions">

@@ -23,15 +23,15 @@ export default function Home() {
           <p className="eyebrow light">Galericiler için güvenli sanal POS çözümleri</p>
           <h1>TaşıtPOS</h1>
           <p>
-            Müşterine taksit sun, satışını büyüt. Sen sat, kartlı tahsilatı ve
-            sanal POS anlaşmasını kolayca çözelim.
+            Müşterine taksit sun, satışını büyüt. Sen sat, güvenli kartlı
+            tahsilatı TaşıtPOS ile kolayca çöz.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={brand.registerUrl} target="_blank" rel="noreferrer">
               Hemen Sanal POS Başvurusu
             </a>
             <Link className="btn btn-ghost" href="/hizmetlerimiz">
-              Kart Taksit İmkanlarını İncele
+              Taksit İmkanlarını İncele
             </Link>
           </div>
         </div>
@@ -48,21 +48,21 @@ export default function Home() {
           <div className="platform-grid">
             <div className="copy-stack platform-copy">
               <p className="eyebrow">Platform</p>
-              <h2>Oto galeriniz için pratik sanal POS ve kart taksit altyapısı.</h2>
+              <h2>Müşterine taksit sun, araç satışını daha kolay kapat.</h2>
               <p>
-                Araç satışında müşteriniz kredi kartıyla ödeme yapmak
-                istediğinde süreci uzatmadan, güvenli ve anlaşılır bir ödeme
-                akışı sunarsınız.
+                Araç almak isteyen müşteri için ödeme kolaylığı satışın en
+                kritik anıdır. TaşıtPOS ile kredi kartına taksit sunar, güvenli
+                sanal POS altyapısıyla tahsilat alırsın.
               </p>
-              <h3>Müşterine taksit sun, tahsilatı güvenle tamamla.</h3>
+              <h3>Sen sat, tahsilatı pratik şekilde tamamla.</h3>
               <p>
-                Galeriniz sanal POS başvurusunu tamamladıktan sonra kapora,
-                peşinat veya araç bedeli için ödeme linki oluşturabilir; vade
-                farkını müşteriye yansıtarak satışını daha rahat kapatabilir.
+                Kapora, peşinat veya araç bedeli için ödeme linki gönder.
+                Taksitli ödemede oluşan vade farkını müşteriye yansıt, satışını
+                büyüt.
               </p>
               <div className="platform-points">
-                <span>Tüm kredi kartlarına taksit imkanı</span>
-                <span>Güvenli online ödeme ve ödeme linki</span>
+                <span>Tüm kredi kartlarına 12 aya kadar taksit</span>
+                <span>Güvenli ödeme linkiyle hızlı tahsilat</span>
                 <span>Vade farkı müşteriye yansıtılır</span>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function Home() {
         <div className="container">
           <SectionHeader
             eyebrow="Hizmetler"
-            title="Galerinizin sanal POS anlaşması için gereken ana imkanlar."
+            title="Daha çok müşteri, daha çok satış için pratik POS imkanları."
           />
           <ServiceGrid />
         </div>
@@ -102,8 +102,8 @@ export default function Home() {
             <SectionHeader
               align="left"
               eyebrow="Kurulum"
-              title="Başvurudan ödeme almaya kadar kolay ilerleyen süreç."
-              text="Amaç karmaşık program satmak değil; galerinizin hızlıca sanal POS kullanıp müşterisinden kartla tahsilat almasını sağlamak."
+              title="Hemen başla, kısa sürede tahsilat almaya başla."
+              text="Başvuru süreci sade ilerler. Sanal POS altyapın hazırlanır, müşterine taksit sunar ve güvenli ödeme alırsın."
             />
             <ProcessList />
           </div>
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="container">
           <SectionHeader
             eyebrow="Bayi Deneyimleri"
-            title="Kart taksit sunan galeriler satış görüşmesini daha rahat kapatır."
+            title="Taksit imkanı satış konuşmasını güçlendirir."
           />
           <div className="testimonial-grid">
             {testimonials.map((item) => (

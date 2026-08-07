@@ -41,8 +41,8 @@ export default function ContactPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="İletişim"
-        title="Galeriniz için sanal POS başvurusunu birlikte başlatalım."
-        text="Kredi kartına taksit, ödeme linki ve online tahsilat imkanları hakkında ekibimizle görüşebilirsiniz."
+        title="Hemen başla, müşterine taksit sun."
+        text="Sanal POS, kredi kartına taksit ve ödeme linki için ekibimizle hemen görüş."
       />
 
       <section className="section">

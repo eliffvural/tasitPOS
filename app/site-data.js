@@ -23,51 +23,51 @@ export const navigation = [
 ];
 
 export const stats = [
-  { value: "12 aya", label: "Kredi kartına taksit imkanı" },
-  { value: "Aynı gün", label: "Sanal POS başvuru süreci" },
-  { value: "256 Bit", label: "SSL ile güvenli ödeme altyapısı" },
-  { value: "7/24", label: "Online ödeme alma imkanı" },
+  { value: "12 aya", label: "Tüm kredi kartlarına taksit" },
+  { value: "Hızlı", label: "Sanal POS başvuru süreci" },
+  { value: "%100", label: "Güvenli ödeme altyapısı" },
+  { value: "7/24", label: "Uzman ekibimiz yanında" },
 ];
 
 export const services = [
   {
-    title: "Galerilere Özel Sanal POS",
-    text: "Araç satışında kredi kartıyla güvenli ödeme almanız için pratik sanal POS altyapısı.",
+    title: "Müşterine Taksit Sun",
+    text: "Tüm kredi kartlarına taksit imkanıyla müşterinin ödeme kararını kolaylaştır.",
   },
   {
-    title: "Karta Taksit İmkanı",
-    text: "Müşterinize taksit sunun, satış kararını kolaylaştırın ve tahsilatı güvenle tamamlayın.",
+    title: "Satışını Büyüt",
+    text: "Peşin ödeme engeline takılmadan daha fazla müşteriye satış fırsatı sun.",
   },
   {
-    title: "Ödeme Linki",
-    text: "Telefondan, ilandan veya uzaktan görüşmeden sonra müşterinize ödeme linki gönderin.",
+    title: "Sen Sat, Tahsilatı Biz Çözelim",
+    text: "Kapora, peşinat veya araç bedeli için güvenli ödeme linkiyle tahsilat al.",
   },
   {
     title: "Vade Farkı Müşteriye",
-    text: "Taksitli satışlarda vade farkını müşteriye yansıtarak tahsilatınızı daha net yönetin.",
+    text: "Taksitli ödemede oluşan vade farkı müşteriye yansıtılır, satışın korunur.",
   },
   {
-    title: "Güvenli Ödeme Altyapısı",
-    text: "Kart bilgilerinin güvenli işlendiği, SSL korumalı ve kontrollü ödeme deneyimi.",
+    title: "Güvenli Ödeme",
+    text: "256 Bit SSL ile güvenli altyapı üzerinden kartlı ödeme alırsın.",
   },
   {
-    title: "Hızlı Kurulum Desteği",
-    text: "Başvurudan kullanıma kadar sanal POS süreciniz için kolay ve anlaşılır destek.",
+    title: "Hemen Kullanmaya Başla",
+    text: "Başvurunu yap, sanal POS sürecin hızlıca başlasın, satışta bekleme.",
   },
 ];
 
 export const processSteps = [
   {
-    title: "Başvurunu yap",
-    text: "Galeri bilgilerinizi paylaşın, sanal POS başvuru süreciniz hızlıca başlatılsın.",
+    title: "Hemen başvur",
+    text: "Galeri bilgilerini paylaş, sanal POS başvuru sürecin hızlıca başlasın.",
   },
   {
-    title: "Sanal POS'un aktive olsun",
-    text: "Ödeme alma altyapınız hazırlanır, kart taksit seçenekleri kullanımınıza açılır.",
+    title: "Taksit seçeneklerin açılsın",
+    text: "Kredi kartına taksit ve ödeme linki altyapısı satış akışına hazır hale gelsin.",
   },
   {
-    title: "Müşterinden ödeme al",
-    text: "Müşterine taksit sun, ödeme linkini gönder ve satış tahsilatını güvenle tamamla.",
+    title: "Ödeme al",
+    text: "Müşterine taksit sun, ödeme linkini gönder, tahsilatı güvenle tamamla.",
   },
 ];
 
