@@ -1,41 +1,18 @@
-import Link from "next/link";
 import {
   CTA,
+  HeroSlider,
   Metrics,
   ProcessList,
   SectionHeader,
   ServiceGrid,
   SiteFrame,
 } from "./components";
-import { brand, testimonials } from "./site-data";
+import { testimonials } from "./site-data";
 
 export default function Home() {
   return (
     <SiteFrame>
-      <section className="home-hero">
-        <img
-          src="/assets/images/tasitpos/hero-payment.png"
-          alt="Oto galeride dijital ödeme onayı gösteren danışman"
-          className="hero-image"
-        />
-        <div className="hero-overlay" />
-        <div className="container hero-content">
-          <p className="eyebrow light">Oto galerilere özel sanal POS çözümleri</p>
-          <h1>TaşıtPOS</h1>
-          <p>
-            Oto galeriniz için güvenli ve hızlı sanal POS çözümleri. Taksitli
-            araç satışı yapın, müşterinize ödeme kolaylığı sunun.
-          </p>
-          <div className="hero-actions">
-            <a className="btn btn-primary" href={brand.registerUrl} target="_blank" rel="noreferrer">
-              Hemen Sanal POS Başvurusu
-            </a>
-            <Link className="btn btn-ghost" href="/hizmetlerimiz">
-              Taksit İmkanlarını İncele
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section className="stats-band">
         <div className="container">
