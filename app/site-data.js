@@ -23,70 +23,70 @@ export const navigation = [
 ];
 
 export const stats = [
-  { value: "1000+", label: "Oto galeri çözüm ortağı" },
-  { value: "50.000+", label: "Dijital tahsilat deneyimi" },
-  { value: "%99.9", label: "Altyapı erişilebilirliği" },
-  { value: "1 gün", label: "Hızlı başvuru ve aktivasyon" },
+  { value: "12 aya", label: "Kredi kartına taksit imkanı" },
+  { value: "Aynı gün", label: "Sanal POS başvuru süreci" },
+  { value: "256 Bit", label: "SSL ile güvenli ödeme altyapısı" },
+  { value: "7/24", label: "Online ödeme alma imkanı" },
 ];
 
 export const services = [
   {
-    title: "Sanal POS Entegrasyonu",
-    text: "Galerinizin satış akışına uygun güvenli kartlı ödeme altyapısı.",
+    title: "Galerilere Özel Sanal POS",
+    text: "Araç satışında kredi kartıyla güvenli ödeme almanız için pratik sanal POS altyapısı.",
   },
   {
-    title: "Taksitli Araç Satışı",
-    text: "Müşterinize ödeme seçeneklerini net sunan, hızlı ve takip edilebilir tahsilat.",
+    title: "Karta Taksit İmkanı",
+    text: "Müşterinize taksit sunun, satış kararını kolaylaştırın ve tahsilatı güvenle tamamlayın.",
   },
   {
     title: "Ödeme Linki",
-    text: "Telefondan, ilandan veya uzaktan satış görüşmesinden sonra tek linkle tahsilat.",
+    text: "Telefondan, ilandan veya uzaktan görüşmeden sonra müşterinize ödeme linki gönderin.",
   },
   {
-    title: "Mutabakat ve Raporlama",
-    text: "İşlem durumu, tahsilat performansı ve bekleyen ödemeleri tek panelden izleme.",
+    title: "Vade Farkı Müşteriye",
+    text: "Taksitli satışlarda vade farkını müşteriye yansıtarak tahsilatınızı daha net yönetin.",
   },
   {
-    title: "Risk ve İtiraz Yönetimi",
-    text: "Sahtecilik, chargeback ve işlem güvenliği kontrolleriyle daha rahat satış.",
+    title: "Güvenli Ödeme Altyapısı",
+    text: "Kart bilgilerinin güvenli işlendiği, SSL korumalı ve kontrollü ödeme deneyimi.",
   },
   {
-    title: "Bayi Destek Ekibi",
-    text: "Kurulumdan günlük operasyona kadar oto galeri süreçlerini bilen destek.",
+    title: "Hızlı Kurulum Desteği",
+    text: "Başvurudan kullanıma kadar sanal POS süreciniz için kolay ve anlaşılır destek.",
   },
 ];
 
 export const processSteps = [
   {
-    title: "Başvurunuzu alın",
-    text: "Galeri bilgileri ve ihtiyaç duyulan ödeme akışı birlikte netleştirilir.",
+    title: "Başvurunu yap",
+    text: "Galeri bilgilerinizi paylaşın, sanal POS başvuru süreciniz hızlıca başlatılsın.",
   },
   {
-    title: "Panelinizi aktive edin",
-    text: "Sanal POS, kullanıcı rolleri ve işlem limitleri galeriniz için hazırlanır.",
+    title: "Sanal POS'un aktive olsun",
+    text: "Ödeme alma altyapınız hazırlanır, kart taksit seçenekleri kullanımınıza açılır.",
   },
   {
-    title: "Tahsilata başlayın",
-    text: "Link, panel veya satış masası üzerinden güvenli ödeme kabul edilir.",
+    title: "Müşterinden ödeme al",
+    text: "Müşterine taksit sun, ödeme linkini gönder ve satış tahsilatını güvenle tamamla.",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Müşteriye ödeme linki göndermek ve işlemi aynı ekrandan takip etmek tahsilat hızımızı ciddi şekilde artırdı.",
+      "Müşteriye taksit seçeneğini net sununca satış konuşması daha hızlı kapanıyor.",
     name: "Mehmet Yılmaz",
     role: "Ankara Premium Otomotiv",
   },
   {
     quote:
-      "Taksit seçeneklerini satış görüşmesinde net gösterebildiğimiz için karar süreci hızlandı.",
+      "Kapora ve araç bedeli için ödeme linki göndermek günlük satış akışımızı rahatlattı.",
     name: "Ahmet Kaya",
     role: "İzmir Araç Merkezi",
   },
   {
     quote:
-      "Fiziksel POS bağımlılığı azaldı. Raporlama ve mutabakat tarafında ekip çok daha rahat çalışıyor.",
+      "Sanal POS anlaşmasıyla müşteriye kartla ödeme alternatifi sunmak elimizi güçlendirdi.",
     name: "Fatma Demir",
     role: "İstanbul Galerisi",
   },
@@ -94,18 +94,18 @@ export const testimonials = [
 
 export const caseStudies = [
   {
-    title: "Uzaktan kapora tahsilatı",
-    metric: "%38 daha hızlı",
-    text: "İlan sonrası görüşmelerde güvenli ödeme linkiyle kapora akışı standart hale getirildi.",
+    title: "Müşterine taksit sun",
+    metric: "12 aya kadar",
+    text: "Araç satışında kredi kartına taksit alternatifiyle müşteri kararını kolaylaştır.",
   },
   {
-    title: "Taksitli satış takibi",
-    metric: "Tek panel",
-    text: "Satış, muhasebe ve yönetim ekipleri aynı işlem geçmişi üzerinden ilerledi.",
+    title: "Tahsilatı online al",
+    metric: "Ödeme linki",
+    text: "Kapora, peşinat veya kalan araç bedeli için müşteriye güvenli ödeme linki gönder.",
   },
   {
-    title: "Bayi ağı operasyonu",
-    metric: "7/24 izlenebilir",
-    text: "Şubeler, kullanıcı rolleri ve işlem durumları merkezden takip edilebilir hale geldi.",
+    title: "Vade farkını yansıt",
+    metric: "Net satış",
+    text: "Taksitli ödemede oluşan vade farkını müşteriye yansıtarak satışını koru.",
   },
 ];

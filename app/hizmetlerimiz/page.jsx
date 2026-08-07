@@ -3,7 +3,7 @@ import { CTA, PageIntro, ProcessList, SectionHeader, ServiceGrid, SiteFrame } fr
 export const metadata = {
   title: "Hizmetlerimiz",
   description:
-    "Sanal POS, taksitli satış, ödeme linki, raporlama ve bayi destek hizmetleri.",
+    "Oto galeriler için sanal POS, karta taksit, ödeme linki ve hızlı başvuru hizmetleri.",
 };
 
 export default function ServicesPage() {
@@ -11,8 +11,8 @@ export default function ServicesPage() {
     <SiteFrame>
       <PageIntro
         eyebrow="Hizmetlerimiz"
-        title="Sanal POS'tan mutabakata kadar galeri ödeme operasyonu."
-        text="Araç satışında ödeme almayı, ödeme durumunu takip etmeyi ve tahsilat performansını raporlamayı tek çatı altında toplar."
+        title="Oto galeriler için sanal POS ve kredi kartına taksit imkanı."
+        text="Müşterine taksit sun, kapora veya araç bedelini güvenli ödeme linkiyle al, satışını daha pratik tamamla."
       />
 
       <section className="section">
@@ -24,24 +24,24 @@ export default function ServicesPage() {
       <section className="section soft compact-section">
         <div className="container">
           <SectionHeader
-            eyebrow="Modüller"
-            title="Satıştan muhasebeye uzanan ödeme operasyonu."
+            eyebrow="Ödeme Akışı"
+            title="Satış anında ihtiyaç duyulan pratik POS imkanları."
           />
           <div className="module-grid">
             <article>
-              <strong>Satış Ekibi</strong>
-              <h3>Ödeme linki ve taksit seçeneği</h3>
-              <p>Müşteri görüşmesi sırasında anlaşılır seçenekler sunulur ve işlem başlatılır.</p>
+              <strong>Kart Taksit</strong>
+              <h3>Müşterine taksit seçeneği sun</h3>
+              <p>Araç satışında ödeme kararını kolaylaştıran taksitli tahsilat imkanı.</p>
             </article>
             <article>
-              <strong>Muhasebe</strong>
-              <h3>Mutabakat ve işlem geçmişi</h3>
-              <p>Başarılı, bekleyen veya iptal edilen tahsilatlar düzenli biçimde takip edilir.</p>
+              <strong>Ödeme Linki</strong>
+              <h3>Uzaktan ödeme al</h3>
+              <p>Kapora, peşinat veya kalan ödeme için müşteriye güvenli link gönderilir.</p>
             </article>
             <article>
-              <strong>Yönetim</strong>
-              <h3>Şube ve kullanıcı kontrolü</h3>
-              <p>Yetkiler, limitler ve işlem görünürlüğü daha yönetilebilir hale gelir.</p>
+              <strong>Hızlı Başvuru</strong>
+              <h3>Sanal POS sürecini başlat</h3>
+              <p>Galerinizin POS anlaşması için gerekli başvuru adımları sadeleştirilir.</p>
             </article>
           </div>
         </div>
@@ -52,8 +52,8 @@ export default function ServicesPage() {
           <SectionHeader
             align="left"
             eyebrow="Nasıl işler?"
-            title="Bayi ekibiniz için öğrenmesi kolay bir ödeme akışı."
-            text="İşlem adımları, satış anındaki hız ve işlem sonrası takip ihtiyacına göre tasarlandı."
+            title="Sanal POS başvurusu hızlı, ödeme alma süreci pratiktir."
+            text="Galeriniz başvurusunu tamamlar, ödeme altyapısı aktif olur ve müşteriye kartla ödeme alternatifi sunulur."
           />
           <ProcessList />
         </div>
@@ -64,18 +64,18 @@ export default function ServicesPage() {
           <div className="copy-stack">
             <SectionHeader
               align="left"
-              eyebrow="Panel"
-              title="Tahsilat performansı ve bekleyen işlemler tek ekranda."
+              eyebrow="Sanal POS"
+              title="Öncelik satış anında hızlı ve güvenli ödeme almaktır."
             />
             <p>
-              Günlük işlem adetleri, başarılı tahsilatlar, bekleyen ödemeler ve
-              mutabakat bilgileri ekiplerin hızlı karar alabileceği biçimde
-              sunulur.
+              TaşıtPOS, araç satışında kartla tahsilat almayı kolaylaştıran
+              sanal POS çözümüdür. Galeriniz müşterisine taksit seçeneği
+              sunar, ödeme linkiyle tahsilatı güvenle tamamlar.
             </p>
             <ul className="check-list">
-              <li>İşlem bazlı durum takibi</li>
-              <li>Taksit ve kalan bakiye görünürlüğü</li>
-              <li>Şube ve kullanıcı bazlı operasyon kontrolü</li>
+              <li>Kredi kartına taksitli ödeme alma</li>
+              <li>Kapora ve araç bedeli için ödeme linki</li>
+              <li>Vade farkını müşteriye yansıtma imkanı</li>
             </ul>
           </div>
           <img

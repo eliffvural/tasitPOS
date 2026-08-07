@@ -87,8 +87,8 @@ function Footer() {
         <div>
           <Logo />
           <p>
-            Oto galerileri için güvenli sanal POS, taksitli tahsilat ve panel
-            tabanlı ödeme operasyonu.
+            Oto galerileri için kredi kartına taksit, güvenli sanal POS ve
+            hızlı online tahsilat çözümü.
           </p>
         </div>
         <div>
@@ -103,8 +103,8 @@ function Footer() {
           <h2>Hizmetler</h2>
           <span>Sanal POS</span>
           <span>Ödeme Linki</span>
-          <span>Taksit Yönetimi</span>
-          <span>Raporlama</span>
+          <span>Karta Taksit</span>
+          <span>Hızlı Başvuru</span>
         </div>
         <div>
           <h2>İletişim</h2>
@@ -144,8 +144,8 @@ export function PageIntro({ eyebrow, title, text }) {
           <p>{text}</p>
           <div className="intro-badges" aria-label="Platform özellikleri">
             <span>TCMB lisanslı altyapı</span>
-            <span>Online tahsilat</span>
-            <span>Panel raporlama</span>
+            <span>Kredi kartına taksit</span>
+            <span>Online ödeme linki</span>
           </div>
         </div>
         <aside className="intro-visual" aria-label="Oto galeri ödeme deneyimi">
@@ -154,8 +154,8 @@ export function PageIntro({ eyebrow, title, text }) {
             alt="Oto galeride ödeme danışmanlığı görüşmesi"
           />
           <div className="intro-proof">
-            <span>Galeri satış akışına uygun</span>
-            <strong>Güvenli tahsilat ve takip</strong>
+            <span>Galerilere özel sanal POS</span>
+            <strong>Müşterine taksit sun</strong>
           </div>
         </aside>
       </div>
@@ -205,7 +205,7 @@ export function ProcessList() {
   );
 }
 
-export function CTA({ title = "Galeriniz için güvenli tahsilata bugün başlayın." }) {
+export function CTA({ title = "Galeriniz için sanal POS başvurusunu bugün başlatalım." }) {
   return (
     <section className="cta-band">
       <div className="container cta-inner">

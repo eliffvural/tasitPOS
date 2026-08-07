@@ -20,18 +20,18 @@ export default function Home() {
         />
         <div className="hero-overlay" />
         <div className="container hero-content">
-          <p className="eyebrow light">Oto galerilere özel ödeme altyapısı</p>
+          <p className="eyebrow light">Galericiler için güvenli sanal POS çözümleri</p>
           <h1>TaşıtPOS</h1>
           <p>
-            Sanal POS, taksitli tahsilat ve güvenli ödeme linklerini galerinizin
-            satış akışına bağlayan kurumsal platform.
+            Müşterine taksit sun, satışını büyüt. Sen sat, kartlı tahsilatı ve
+            sanal POS anlaşmasını kolayca çözelim.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={brand.registerUrl} target="_blank" rel="noreferrer">
-              Hızlı Sanal POS Başvurusu
+              Hemen Sanal POS Başvurusu
             </a>
             <Link className="btn btn-ghost" href="/hizmetlerimiz">
-              Hizmetleri İncele
+              Kart Taksit İmkanlarını İncele
             </Link>
           </div>
         </div>
@@ -48,38 +48,38 @@ export default function Home() {
           <div className="platform-grid">
             <div className="copy-stack platform-copy">
               <p className="eyebrow">Platform</p>
-              <h2>Galeri satışında ödeme, takip ve mutabakat aynı akışta.</h2>
+              <h2>Oto galeriniz için pratik sanal POS ve kart taksit altyapısı.</h2>
               <p>
-                Referans aldığımız modern fintech çizgisini otomotiv
-                galerilerinin günlük operasyonuna uygun, sade ve güven veren
-                bir deneyime taşıdık.
+                Araç satışında müşteriniz kredi kartıyla ödeme yapmak
+                istediğinde süreci uzatmadan, güvenli ve anlaşılır bir ödeme
+                akışı sunarsınız.
               </p>
-              <h3>Satış masasında, telefonda veya uzaktan görüşmede aynı güven.</h3>
+              <h3>Müşterine taksit sun, tahsilatı güvenle tamamla.</h3>
               <p>
-                Bayi ekibiniz ödeme linki oluşturabilir, taksit seçeneklerini
-                gösterebilir, işlem durumunu izleyebilir ve gün sonu raporlarını
-                tek panelden kontrol edebilir.
+                Galeriniz sanal POS başvurusunu tamamladıktan sonra kapora,
+                peşinat veya araç bedeli için ödeme linki oluşturabilir; vade
+                farkını müşteriye yansıtarak satışını daha rahat kapatabilir.
               </p>
               <div className="platform-points">
-                <span>Güvenli kartlı ödeme</span>
-                <span>Taksit ve kapora takibi</span>
-                <span>Anlaşılır rapor ekranları</span>
+                <span>Tüm kredi kartlarına taksit imkanı</span>
+                <span>Güvenli online ödeme ve ödeme linki</span>
+                <span>Vade farkı müşteriye yansıtılır</span>
               </div>
             </div>
 
             <div className="platform-visual">
               <img
                 src="/assets/images/tasitpos/platform-dashboard.png"
-                alt="Oto galeri ödeme paneli ve raporlama ekranları"
+                alt="Oto galeride sanal POS ve kart taksit ekranları"
                 className="feature-image"
               />
               <div className="visual-note visual-note-top">
-                <span>Tahsilat Durumu</span>
-                <strong>Anında takip</strong>
+                <span>Ödeme Al</span>
+                <strong>Kartla tahsilat</strong>
               </div>
               <div className="visual-note visual-note-bottom">
-                <span>Mutabakat</span>
-                <strong>Gün sonu netliği</strong>
+                <span>Taksit</span>
+                <strong>Satışı kolaylaştır</strong>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Home() {
         <div className="container">
           <SectionHeader
             eyebrow="Hizmetler"
-            title="Galerinizin ödeme operasyonu için gerekli ana modüller."
+            title="Galerinizin sanal POS anlaşması için gereken ana imkanlar."
           />
           <ServiceGrid />
         </div>
@@ -102,8 +102,8 @@ export default function Home() {
             <SectionHeader
               align="left"
               eyebrow="Kurulum"
-              title="Başvuru sonrası satışa hazır bir ödeme akışı."
-              text="Teknik karmaşayı azaltan, bayi ekibinin hızlı adapte olacağı net bir başlangıç süreci."
+              title="Başvurudan ödeme almaya kadar kolay ilerleyen süreç."
+              text="Amaç karmaşık program satmak değil; galerinizin hızlıca sanal POS kullanıp müşterisinden kartla tahsilat almasını sağlamak."
             />
             <ProcessList />
           </div>
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="container">
           <SectionHeader
             eyebrow="Bayi Deneyimleri"
-            title="Tahsilat hızını ve takip şeffaflığını artıran deneyim."
+            title="Kart taksit sunan galeriler satış görüşmesini daha rahat kapatır."
           />
           <div className="testimonial-grid">
             {testimonials.map((item) => (
