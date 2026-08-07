@@ -33,25 +33,25 @@ export const services = [
   {
     title: "Sanal POS Entegrasyonu",
     text: "Fiziksel POS cihazına gerek kalmadan kredi kartı ile güvenli tahsilat. Tek link ile müşterinize ödeme gönderin.",
-    image: "/assets/images/tasitpos/hero-payment.png",
+    image: "/assets/images/tasitpos/service-pos.png",
     icon: "card",
   },
   {
     title: "Taksitli Satış Altyapısı",
     text: "12 aya kadar eşit taksit imkanı ile araç satışlarınızı artırın. Tüm bankaların kartları geçerlidir.",
-    image: "/assets/images/tasitpos/dealer-consultation.png",
+    image: "/assets/images/tasitpos/service-installments.png",
     icon: "bolt",
   },
   {
     title: "Raporlama & Analitik",
     text: "Gerçek zamanlı işlem takibi, ödeme hatırlatma sistemi ve kapsamlı mali raporlar ile işinizi kontrol altında tutun.",
-    image: "/assets/images/tasitpos/platform-dashboard.png",
+    image: "/assets/images/tasitpos/service-analytics.png",
     icon: "chart",
   },
   {
     title: "7/24 Teknik Destek",
     text: "Uzman ekibimiz her an yanınızda. Telefon, e-posta ve uzaktan destek ile sorunlarınızı anında çözüyoruz.",
-    image: "/assets/images/tasitpos/dealer-consultation.png",
+    image: "/assets/images/tasitpos/service-support.png",
     icon: "support",
   },
 ];
