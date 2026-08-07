@@ -1,91 +1,79 @@
-import { CTA, PageIntro, ProcessList, SectionHeader, ServiceGrid, SiteFrame } from "../components";
+import { ServiceGrid, SiteFrame } from "../components";
+import { brand, processSteps } from "../site-data";
 
 export const metadata = {
   title: "Hizmetlerimiz",
   description:
-    "Sanal POS, 12 aya kadar taksit yönetimi, online tahsilat ve destek. Oto galeriniz için dijital ödeme çözümleri.",
+    "Bayinize özel dijital ödeme altyapısı. Sanal POS, taksitli satış, raporlama, entegrasyon, güvenlik ve 7/24 teknik destek.",
 };
 
 export default function ServicesPage() {
   return (
     <SiteFrame>
-      <PageIntro
-        eyebrow="Hizmetlerimiz"
-        title="Sanal POS ve taksit çözümleri."
-        text="Oto galerinizdeki ödeme süreçlerini dijitalleştirin. Taksitli satış, online tahsilat ve güvenli ödeme linki tek akışta."
-      />
+      <section className="services-hero">
+        <div className="container">
+          <h1>Hizmetlerimiz</h1>
+          <p>Bayinize özel dijital ödeme altyapısı</p>
+        </div>
+      </section>
 
-      <section className="section">
+      <section className="section services-catalog">
         <div className="container">
           <ServiceGrid detailed />
         </div>
       </section>
 
-      <section className="section soft compact-section">
+      <section className="how-it-works">
         <div className="container">
-          <SectionHeader
-            eyebrow="Ödeme Akışı"
-            title="Bayinize özel dijital çözümler."
-          />
-          <div className="module-grid">
-            <article>
-              <strong>Kart Taksit</strong>
-              <h3>Müşterine taksit seçeneği sun</h3>
-              <p>Araç satışında karar aldıran en net ödeme kolaylığı.</p>
-            </article>
-            <article>
-              <strong>Ödeme Linki</strong>
-              <h3>Uzaktan ödeme al</h3>
-              <p>Kapora, peşinat veya kalan ödeme için güvenli link gönder.</p>
-            </article>
-            <article>
-              <strong>Hızlı Başvuru</strong>
-              <h3>Sanal POS sürecini başlat</h3>
-              <p>POS anlaşması için gerekli başvuru adımları hızlı ilerler.</p>
-            </article>
+          <div className="how-it-works-head">
+            <h2>Nasıl Çalışır?</h2>
+            <p>4 adımda başlayın</p>
+          </div>
+          <div className="process-flow">
+            {processSteps.map((step, index) => (
+              <article key={step.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section dark">
-        <div className="container dark-grid">
-          <SectionHeader
-            align="left"
-            eyebrow="Nasıl Çalışır?"
-            title="Başvurun, kurulum tamamlansın, tahsilata başlayın."
-            text="Sanal POS başvurunuz alınır, ödeme altyapınız hazırlanır ve müşterinize kredi kartıyla ödeme alternatifi sunulur."
-          />
-          <ProcessList />
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container split-layout">
-          <div className="copy-stack">
-            <SectionHeader
-              align="left"
-              eyebrow="Sanal POS"
-              title="Fiziksel POS cihazına gerek kalmadan tahsilat alın."
+      <section className="section services-cta-section">
+        <div className="container setup-cta-wrap">
+          <div className="setup-cta-card">
+            <img
+              src="/assets/images/tasitpos/setup-cta.png"
+              alt="Oto galeride aynı gün sanal POS kurulum görüşmesi"
             />
-            <p>
-              Tek link ile müşterinize ödeme gönderin, 12 aya kadar taksit
-              seçeneği sunun ve araç satış tahsilatını güvenle tamamlayın.
-            </p>
-            <ul className="check-list">
-              <li>Kredi kartına taksitli ödeme alma</li>
-              <li>Kapora ve araç bedeli için ödeme linki</li>
-              <li>Vade farkını müşteriye yansıtma imkanı</li>
-            </ul>
+            <div className="setup-cta-content">
+              <p className="setup-pill">Aynı gün kurulum garantisi</p>
+              <h2>
+                Bugün Başvurun, Yarın <span>Tahsilat Alın</span>
+              </h2>
+              <p>
+                Başvurunuzu tamamlayın, ekibimiz aynı gün sisteminizi kurar.
+                Türkiye genelinde 1000+ aktif galerinin güvendiği altyapı.
+              </p>
+              <div className="setup-checks">
+                <span>Kurulum ücretsiz</span>
+                <span>Bağlayıcı sözleşme yok</span>
+                <span>24 saatte devreye al</span>
+              </div>
+              <div className="setup-actions">
+                <a className="btn btn-primary" href="/iletisim">
+                  Ücretsiz Kurulum Teklifi Alın →
+                </a>
+                <a className="setup-phone" href={brand.phoneHref}>
+                  {brand.phone}
+                </a>
+              </div>
+            </div>
           </div>
-          <img
-            src="/assets/images/tasitpos/platform-dashboard.png"
-            alt="TaşıtPOS ödeme paneli"
-            className="feature-image"
-          />
         </div>
       </section>
-
-      <CTA title="Bugün başvurun, yarın tahsilat alın." />
     </SiteFrame>
   );
 }

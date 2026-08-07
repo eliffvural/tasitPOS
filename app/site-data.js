@@ -10,8 +10,8 @@ export const brand = {
     "https://www.google.com/maps/search/?api=1&query=Muradiye%20Mah.%20Celal%20Bayar%20%C3%9Cniversitesi%20Kamp%C3%BCs%C3%BC%20K%C3%BCme%20Evler%20Tekno%20Kent%20No%3A%2022%20Yunusemre%2FManisa",
   mapEmbedUrl:
     "https://maps.google.com/maps?width=100%25&height=600&hl=tr&q=Muradiye%20Mah.%20Celal%20Bayar%20%C3%9Cniversitesi%20Kamp%C3%BCs%C3%BC%20K%C3%BCme%20Evler%20Tekno%20Kent%20No%3A%2022%20Yunusemre%2FManisa&t=&z=15&ie=UTF8&iwloc=B&output=embed",
-  loginUrl: "https://escrow.tasital.com/web/login",
-  registerUrl: "https://escrow.tasital.com/escrow/broker/register",
+  loginUrl: "/giris",
+  registerUrl: "/basvuru",
 };
 
 export const navigation = [
@@ -32,42 +32,100 @@ export const stats = [
 export const services = [
   {
     title: "Sanal POS Entegrasyonu",
-    text: "Fiziksel POS cihazına gerek kalmadan kredi kartı ile güvenli tahsilat. Tek link ile müşterinize ödeme gönderin.",
+    text: "Müşterinize WhatsApp veya e-posta üzerinden ödeme linki gönderin. Kredi kartı ile güvenli bir şekilde ödeme yapsın. TCMB lisanslı güvenli ödeme altyapısı ile %99.9 uptime garantisi.",
     image: "/assets/images/tasitpos/service-pos.png",
     icon: "card",
+    features: [
+      "Fiziksel cihaz gerektirmez",
+      "Tek link ile ödeme talebi",
+      "Tüm banka kartları geçerli",
+      "3D Secure ile güvenli işlem",
+      "Anlık ödeme bildirimi",
+    ],
   },
   {
     title: "Taksitli Satış Altyapısı",
-    text: "12 aya kadar eşit taksit imkanı ile araç satışlarınızı artırın. Tüm bankaların kartları geçerlidir.",
+    text: "12 aya kadar eşit taksit imkânıyla müşteri portföyünüzü genişletin. Taksit seçeneklerini kolayca yönetin ve araç satışlarınızı artırın.",
     image: "/assets/images/tasitpos/service-installments.png",
     icon: "bolt",
+    features: [
+      "3-12 ay esnek taksit",
+      "Eşit taksit planları",
+      "Otomatik hesaplama",
+      "Kampanya yönetimi",
+      "Vade farkı takibi",
+    ],
   },
   {
     title: "Raporlama & Analitik",
-    text: "Gerçek zamanlı işlem takibi, ödeme hatırlatma sistemi ve kapsamlı mali raporlar ile işinizi kontrol altında tutun.",
+    text: "Tüm işlemlerinizi tek ekrandan takip edin. Otomatik ödeme hatırlatmaları ile gecikmeleri minimize edin. Detaylı raporları indirip muhasebenize aktarın.",
     image: "/assets/images/tasitpos/service-analytics.png",
     icon: "chart",
+    features: [
+      "Gerçek zamanlı dashboard",
+      "İşlem geçmişi",
+      "Ödeme hatırlatma sistemi",
+      "Excel/PDF export",
+      "Aylık mali özet",
+    ],
+  },
+  {
+    title: "Sistem Entegrasyonu",
+    text: "Mevcut galeri yönetim yazılımınıza entegre olun. Kapsamlı API dokümantasyonu ve test ortamı ile entegrasyonu kolayca tamamlayın.",
+    image: "/assets/images/tasitpos/service-pos.png",
+    icon: "link",
+    features: [
+      "Galeri yazılımlarıyla uyumlu",
+      "API erişimi",
+      "Webhook desteği",
+      "Özelleştirilebilir akış",
+      "Test ortamı",
+    ],
+  },
+  {
+    title: "Güvenlik & Uyumluluk",
+    text: "Tüm işlemler Türkiye Cumhuriyet Merkez Bankası lisanslı güvenli ödeme altyapısı üzerinden gerçekleştirilir. PCI DSS uyumlu güvenli veri işleme.",
+    image: "/assets/images/tasitpos/service-support.png",
+    icon: "shield",
+    features: [
+      "TCMB lisanslı altyapı",
+      "PCI DSS uyumlu",
+      "SSL şifreleme",
+      "KVKK uyumlu veri işleme",
+      "Fraud koruma sistemi",
+    ],
   },
   {
     title: "7/24 Teknik Destek",
-    text: "Uzman ekibimiz her an yanınızda. Telefon, e-posta ve uzaktan destek ile sorunlarınızı anında çözüyoruz.",
+    text: "Uzman teknik ekibimiz her an yanınızda. Kurulumdan başlayarak tüm süreçte destek alın. Ortalama 2 saat içinde sorun çözüm garantisi.",
     image: "/assets/images/tasitpos/service-support.png",
     icon: "support",
+    features: [
+      "Telefon desteği",
+      "E-posta desteği",
+      "Uzaktan bağlantı",
+      "Hızlı yanıt süresi",
+      "Eğitim ve onboarding",
+    ],
   },
 ];
 
 export const processSteps = [
   {
-    title: "Başvurunuzu alın",
-    text: "Galeri bilgilerinizi paylaşın, sanal POS başvuru sürecinizi başlatalım.",
+    title: "Başvuru",
+    text: "İletişim formunu doldurun veya arayın",
   },
   {
-    title: "Kurulumu tamamlayın",
-    text: "Ödeme altyapınız hazırlanır, taksit ve ödeme linki seçenekleri açılır.",
+    title: "Kurulum",
+    text: "Aynı gün sistem aktivasyonu",
   },
   {
-    title: "Tahsilata başlayın",
-    text: "Müşterinize taksit sunun, ödeme linki gönderin ve güvenli tahsilat alın.",
+    title: "Entegrasyon",
+    text: "Galerinize özel yapılandırma",
+  },
+  {
+    title: "Kullanım",
+    text: "Hemen ödeme almaya başlayın",
   },
 ];
 

@@ -1,4 +1,5 @@
-import { PageIntro, SiteFrame } from "../components";
+import { SiteFrame } from "../components";
+import { ContactForm } from "../contact-form";
 import { brand } from "../site-data";
 
 const mapSrcDoc = `
@@ -11,21 +12,19 @@ const mapSrcDoc = `
     <style>
       html, body, #map { height: 100%; margin: 0; }
       .leaflet-container { font-family: Arial, sans-serif; }
-      .leaflet-popup-content { color: #17345f; font-weight: 700; }
+      .leaflet-control-attribution { font-size: 10px; }
     </style>
   </head>
   <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-      const map = L.map('map', { scrollWheelZoom: false }).setView([38.67643, 27.30518], 15);
+      const map = L.map('map', { scrollWheelZoom: false, zoomControl: false }).setView([38.67643, 27.30518], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap'
       }).addTo(map);
-      L.marker([38.67643, 27.30518]).addTo(map)
-        .bindPopup('TaşıtPOS - Manisa Teknokent')
-        .openPopup();
+      L.marker([38.67643, 27.30518]).addTo(map);
     </script>
   </body>
 </html>`;
@@ -33,111 +32,79 @@ const mapSrcDoc = `
 export const metadata = {
   title: "İletişim",
   description:
-    "TaşıtPOS ile iletişime geçin; sanal POS kurulumu, destek veya iş birliği talepleriniz için bize ulaşın.",
+    "Sanal POS kurulumu, teknik destek veya iş birliği için uzman ekibimizle iletişime geçin.",
 };
 
 export default function ContactPage() {
   return (
     <SiteFrame>
-      <PageIntro
-        eyebrow="İletişim"
-        title="Bizimle iletişime geçin."
-        text="Sanal POS kurulumu, teknik destek veya iş birliği talepleriniz için formu doldurun ya da bizi arayın."
-      />
+      <section className="contact-hero">
+        <div className="container">
+          <h1>Bizimle İletişime Geçin</h1>
+          <p>
+            Sanal POS kurulumu, teknik destek veya iş birliği için uzman
+            ekibimizle iletişime geçin.
+          </p>
+        </div>
+      </section>
 
-      <section className="section">
+      <section className="section contact-main">
         <div className="container contact-layout">
           <div className="contact-info">
             <h2>İletişim Bilgileri</h2>
-            <div className="contact-line">
-              <span>Telefon</span>
-              <a href={brand.phoneHref}>{brand.phone}</a>
-            </div>
-            <div className="contact-line">
-              <span>E-posta</span>
-              <a href={brand.emailHref}>{brand.email}</a>
-            </div>
-            <div className="contact-line">
-              <span>Adres</span>
-              <p>{brand.address}</p>
-              <a className="text-link" href={brand.mapUrl} target="_blank" rel="noreferrer">
-                Haritada Gör
-              </a>
-            </div>
-            <div className="contact-note">
-              <strong>Çalışma Saatleri</strong>
-              <span>Hafta içi 09:00 - 18:00</span>
-            </div>
-          </div>
 
-          <form className="contact-form" action={brand.emailHref} method="post" encType="text/plain">
-            <label>
-              Ad Soyad
-              <input type="text" name="name" placeholder="Adınız ve soyadınız" />
-            </label>
-            <label>
-              Galeri Adı
-              <input type="text" name="company" placeholder="Galeri veya şirket adı" />
-            </label>
-            <label>
-              Telefon
-              <input type="tel" name="phone" placeholder="05xx xxx xx xx" />
-            </label>
-            <label>
-              Mesajınız
-              <textarea name="message" rows="5" placeholder="Sanal POS ve kart taksit ihtiyacınızı kısaca yazın" />
-            </label>
-            <button className="btn btn-primary" type="submit">
-              Sanal POS Talebi Gönder
-            </button>
-          </form>
-        </div>
-      </section>
-
-      <section className="section soft compact-section">
-        <div className="container">
-          <div className="contact-actions-grid">
-            <a href={brand.phoneHref}>
-              <span>Telefon</span>
-              <strong>{brand.phone}</strong>
-            </a>
-            <a href={brand.emailHref}>
-              <span>E-posta</span>
-              <strong>{brand.email}</strong>
-            </a>
-            <a href={brand.mapUrl} target="_blank" rel="noreferrer">
-              <span>Konum</span>
-              <strong>Haritada Gör</strong>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="map-section" aria-label="TaşıtPOS konum haritası">
-        <div className="container">
-          <div className="map-shell">
-            <div className="map-copy">
-              <p className="eyebrow">Konum</p>
-              <h2>Manisa Teknokent ofisimize ulaşın.</h2>
-              <p>{brand.address}</p>
-            </div>
-            <div className="map-frame">
-              <div className="map-fallback" aria-hidden="true">
-                <span className="map-pin" />
-                <span className="map-road road-1" />
-                <span className="map-road road-2" />
-                <span className="map-road road-3" />
+            <div className="contact-item">
+              <span className="contact-icon contact-icon-pin" aria-hidden="true" />
+              <div>
+                <span>Adres</span>
+                <p>{brand.address}</p>
               </div>
+            </div>
+
+            <div className="contact-item">
+              <span className="contact-icon contact-icon-phone" aria-hidden="true" />
+              <div>
+                <span>Telefon</span>
+                <a href={brand.phoneHref}>{brand.phone}</a>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <span className="contact-icon contact-icon-mail" aria-hidden="true" />
+              <div>
+                <span>E-posta</span>
+                <a href={brand.emailHref}>{brand.email}</a>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <span className="contact-icon contact-icon-clock" aria-hidden="true" />
+              <div>
+                <span>Çalışma Saatleri</span>
+                <p>Pzt-Cum: 09:00-18:00</p>
+              </div>
+            </div>
+
+            <div className="contact-map">
+              <a
+                className="contact-map-open"
+                href={brand.mapUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Haritalarda aç
+              </a>
               <iframe
-                title="TaşıtPOS Manisa Teknokent konumu"
+                title="TaşıtPOS konum haritası"
                 srcDoc={mapSrcDoc}
                 loading="eager"
                 referrerPolicy="no-referrer-when-downgrade"
                 sandbox="allow-scripts allow-same-origin allow-popups"
-                allowFullScreen
               />
             </div>
           </div>
+
+          <ContactForm />
         </div>
       </section>
     </SiteFrame>

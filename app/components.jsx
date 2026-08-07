@@ -77,12 +77,12 @@ function Header() {
           ))}
         </nav>
         <div className="nav-actions">
-          <a className="portal-link" href={brand.loginUrl} target="_blank" rel="noreferrer">
+          <Link className="portal-link" href={brand.loginUrl}>
             Müşteri Girişi
-          </a>
-          <a className="btn btn-primary btn-small" href={brand.registerUrl} target="_blank" rel="noreferrer">
+          </Link>
+          <Link className="btn btn-primary btn-small" href={brand.registerUrl}>
             Hızlı Başvuru
-          </a>
+          </Link>
         </div>
         <details className="mobile-menu">
           <summary aria-label="Menüyü aç">☰</summary>
@@ -92,12 +92,8 @@ function Header() {
                 {item.label}
               </Link>
             ))}
-            <a href={brand.loginUrl} target="_blank" rel="noreferrer">
-              Müşteri Girişi
-            </a>
-            <a href={brand.registerUrl} target="_blank" rel="noreferrer">
-              Hızlı Başvuru
-            </a>
+            <Link href={brand.loginUrl}>Müşteri Girişi</Link>
+            <Link href={brand.registerUrl}>Hızlı Başvuru</Link>
           </div>
         </details>
       </div>
@@ -106,6 +102,13 @@ function Header() {
 }
 
 function Footer() {
+  const serviceLinks = [
+    { href: "/hizmetlerimiz", label: "Sanal POS" },
+    { href: "/hizmetlerimiz", label: "Ödeme Linki" },
+    { href: "/hizmetlerimiz", label: "12 Aya Taksit" },
+    { href: "/basvuru", label: "Hemen Başla" },
+  ];
+
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
@@ -126,10 +129,11 @@ function Footer() {
         </div>
         <div>
           <h2>Hizmetler</h2>
-          <span>Sanal POS</span>
-          <span>Ödeme Linki</span>
-          <span>12 Aya Taksit</span>
-          <span>Hemen Başla</span>
+          {serviceLinks.map((item) => (
+            <Link key={item.label} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
         </div>
         <div>
           <h2>İletişim</h2>
@@ -192,9 +196,9 @@ export function HeroSlider() {
           <h1>{slide.title}</h1>
           <p>{slide.text}</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={brand.registerUrl} target="_blank" rel="noreferrer">
+            <Link className="btn btn-primary" href={brand.registerUrl}>
               Ücretsiz Kurulum Teklifi Al
-            </a>
+            </Link>
             <Link className="btn btn-ghost" href="/hizmetlerimiz">
               Nasıl Çalışır?
             </Link>
@@ -278,12 +282,21 @@ export function ServiceGrid({ detailed = false }) {
         <article className="service-card" key={service.title}>
           <div className="service-card-media">
             <img src={service.image} alt={`${service.title} görseli`} />
-            <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
+            {!detailed ? (
+              <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
+            ) : null}
           </div>
           <div className="service-card-body">
             <span className={`service-icon service-icon-${service.icon}`} aria-hidden="true" />
             <h3>{service.title}</h3>
             <p>{service.text}</p>
+            {detailed && service.features?.length ? (
+              <ul className="service-features">
+                {service.features.map((feature) => (
+                  <li key={feature}>{feature}</li>
+                ))}
+              </ul>
+            ) : null}
           </div>
         </article>
       ))}
@@ -296,7 +309,7 @@ export function ProcessList() {
     <div className="process-list">
       {processSteps.map((step, index) => (
         <article key={step.title}>
-          <span>{index + 1}</span>
+          <span>{String(index + 1).padStart(2, "0")}</span>
           <h3>{step.title}</h3>
           <p>{step.text}</p>
         </article>
@@ -314,9 +327,9 @@ export function CTA({ title = "Müşterine taksit sun, satışını büyüt." })
           <h2>{title}</h2>
         </div>
         <div className="cta-actions">
-          <a className="btn btn-light" href={brand.registerUrl} target="_blank" rel="noreferrer">
+          <Link className="btn btn-light" href={brand.registerUrl}>
             Sanal POS Başvurusu
-          </a>
+          </Link>
           <Link className="btn btn-outline-light" href="/iletisim">
             İletişime Geç
           </Link>
