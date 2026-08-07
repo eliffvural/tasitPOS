@@ -1,7 +1,7 @@
 export const brand = {
   name: "TaşıtPOS",
-  phone: "+90 531 360 45 34",
-  phoneHref: "tel:+905313604534",
+  phone: "+90 534 213 71 16",
+  phoneHref: "tel:+905342137116",
   email: "info@gemutechnology.com",
   emailHref: "mailto:info@gemutechnology.com",
   address:
