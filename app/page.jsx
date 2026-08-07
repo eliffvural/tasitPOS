@@ -25,23 +25,28 @@ export default function Home() {
           <div className="platform-grid">
             <div className="copy-stack platform-copy">
               <p className="eyebrow">Neden TaşıtPOS?</p>
-              <h2>Galerinizin ihtiyacını bilen ödeme ortağı.</h2>
+              <h2>
+                Galerinizin İhtiyacını Bilen <span>Fintech Ortağı</span>
+              </h2>
               <p>
-                Oto galericiliğin dinamiklerini bilen ekibimiz, satış anında
-                ihtiyaç duyulan hızlı ve güvenli ödeme çözümlerini sade bir
-                akışta sunar.
-              </p>
-              <h3>Müşterine taksit sun, satış fırsatını kaçırma.</h3>
-              <p>
-                Aynı gün kurulum desteği, TCMB lisanslı güvenli ödeme altyapısı
-                ve 12 aya kadar taksit seçenekleriyle galerinize uygun sanal
-                POS akışı kurulur.
+                Oto galericiliğin dinamiklerini bizzat deneyimleyen ekibimiz,
+                sahada test edilmiş çözümler sunar. Platformumuz galerinize
+                uyum sağlar; siz platforma değil.
               </p>
               <div className="platform-points">
                 <span>Aynı gün kurulum, sıfır teknik yük</span>
                 <span>TCMB lisanslı güvenli ödeme altyapısı</span>
                 <span>12 aya kadar esnek taksit yönetimi</span>
+                <span>Gerçek zamanlı ödeme takibi</span>
               </div>
+              <p className="platform-alert">
+                Taksit imkanı sunmayan galeriler araç satışlarının ortalama
+                <strong> %35'ini </strong>
+                kaybediyor.
+              </p>
+              <a className="btn btn-primary platform-cta" href="/iletisim">
+                Ücretsiz Danışmanlık Al
+              </a>
             </div>
 
             <div className="platform-visual">
