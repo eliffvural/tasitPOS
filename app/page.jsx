@@ -1,9 +1,6 @@
 import {
-  CTA,
   HeroSlider,
   Metrics,
-  ProcessList,
-  SectionHeader,
   ServiceGrid,
   SiteFrame,
 } from "./components";
@@ -185,21 +182,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section dark">
-        <div className="container">
-          <div className="dark-grid">
-            <SectionHeader
-              align="left"
-              eyebrow="Nasıl Çalışır?"
-              title="Başvurudan tahsilata kadar sade bir süreç."
-              text="Galeriniz başvurusunu tamamlar, sanal POS altyapısı hazırlanır ve müşterinize kredi kartıyla ödeme alternatifi sunulur."
-            />
-            <ProcessList />
-          </div>
-        </div>
-      </section>
-
-      <CTA />
     </SiteFrame>
   );
 }
