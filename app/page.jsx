@@ -43,32 +43,45 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section platform-section">
         <div className="container">
-          <SectionHeader
-            eyebrow="Platform"
-            title="Galeri satışında ödeme, takip ve mutabakat aynı akışta."
-            text="Referans aldığımız modern fintech çizgisini otomotiv galerilerinin günlük operasyonuna uygun, sade ve güven veren bir deneyime taşıdık."
-          />
-          <div className="split-layout">
-            <div className="copy-stack">
+          <div className="platform-grid">
+            <div className="copy-stack platform-copy">
+              <p className="eyebrow">Platform</p>
+              <h2>Galeri satışında ödeme, takip ve mutabakat aynı akışta.</h2>
+              <p>
+                Referans aldığımız modern fintech çizgisini otomotiv
+                galerilerinin günlük operasyonuna uygun, sade ve güven veren
+                bir deneyime taşıdık.
+              </p>
               <h3>Satış masasında, telefonda veya uzaktan görüşmede aynı güven.</h3>
               <p>
                 Bayi ekibiniz ödeme linki oluşturabilir, taksit seçeneklerini
                 gösterebilir, işlem durumunu izleyebilir ve gün sonu raporlarını
                 tek panelden kontrol edebilir.
               </p>
-              <ul className="check-list">
-                <li>Güvenli kartlı ödeme ve işlem doğrulama</li>
-                <li>Taksit, kapora ve kalan bakiye takibi</li>
-                <li>Muhasebe için anlaşılır rapor ekranları</li>
-              </ul>
+              <div className="platform-points">
+                <span>Güvenli kartlı ödeme</span>
+                <span>Taksit ve kapora takibi</span>
+                <span>Anlaşılır rapor ekranları</span>
+              </div>
             </div>
-            <img
-              src="/assets/images/tasitpos/platform-dashboard.png"
-              alt="Oto galeri ödeme paneli ve raporlama ekranları"
-              className="feature-image"
-            />
+
+            <div className="platform-visual">
+              <img
+                src="/assets/images/tasitpos/platform-dashboard.png"
+                alt="Oto galeri ödeme paneli ve raporlama ekranları"
+                className="feature-image"
+              />
+              <div className="visual-note visual-note-top">
+                <span>Tahsilat Durumu</span>
+                <strong>Anında takip</strong>
+              </div>
+              <div className="visual-note visual-note-bottom">
+                <span>Mutabakat</span>
+                <strong>Gün sonu netliği</strong>
+              </div>
+            </div>
           </div>
         </div>
       </section>
