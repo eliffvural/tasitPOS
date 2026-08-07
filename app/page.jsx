@@ -7,7 +7,7 @@ import {
   ServiceGrid,
   SiteFrame,
 } from "./components";
-import { testimonials } from "./site-data";
+import { brand, testimonials } from "./site-data";
 
 export default function Home() {
   return (
@@ -121,6 +121,64 @@ export default function Home() {
                 </figcaption>
               </figure>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="setup-trust-section">
+        <div className="trust-marquee" aria-label="Güven ve uyumluluk">
+          <div className="trust-title">
+            <span />
+            <strong>Güven & Uyumluluk</strong>
+            <span />
+          </div>
+          <div className="trust-track">
+            {[
+              "3D Secure",
+              "Visa",
+              "Mastercard",
+              "Troy",
+              "TCMB Lisanslı",
+              "PCI DSS",
+              "SSL Güvenli",
+              "3D Secure",
+              "Visa",
+              "Mastercard",
+            ].map((item, index) => (
+              <span key={`${item}-${index}`}>{item}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="container setup-cta-wrap">
+          <div className="setup-cta-card">
+            <img
+              src="/assets/images/tasitpos/setup-cta.png"
+              alt="Oto galeride aynı gün sanal POS kurulum görüşmesi"
+            />
+            <div className="setup-cta-content">
+              <p className="setup-pill">Aynı gün kurulum garantisi</p>
+              <h2>
+                Bugün Başvurun, Yarın <span>Tahsilat Alın</span>
+              </h2>
+              <p>
+                Başvurunuzu tamamlayın, ekibimiz aynı gün sisteminizi kurar.
+                Türkiye genelinde oto galeriler için güvenli sanal POS altyapısı.
+              </p>
+              <div className="setup-badges">
+                <span>Kurulum ücretsiz</span>
+                <span>Bağlayıcı sözleşme yok</span>
+                <span>24 saatte devreye al</span>
+              </div>
+              <div className="setup-actions">
+                <a className="btn btn-primary" href="/iletisim">
+                  Ücretsiz Kurulum Teklifi Al
+                </a>
+                <a className="setup-phone" href={brand.phoneHref}>
+                  {brand.phone}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
