@@ -1,4 +1,4 @@
-import { CTA, Metrics, PageIntro, SectionHeader, SiteFrame } from "../components";
+import { SiteFrame } from "../components";
 
 export const metadata = {
   title: "Hakkımızda",
@@ -6,79 +6,174 @@ export const metadata = {
     "TaşıtPOS, oto galeriler için TCMB lisanslı güvenli ödeme altyapısıyla sanal POS ve taksit çözümleri sunar.",
 };
 
+const values = [
+  {
+    title: "Şeffaflık",
+    text: "Her işlemde, her raporlamada ve her müşteri ilişkisinde tam şeffaflık. Gizli maliyet yok, belirsiz süreç yok.",
+    image: "/assets/images/tasitpos/about-value-transparency.png",
+    icon: "✓",
+  },
+  {
+    title: "Hız",
+    text: "Aynı gün kurulum garantisi ve 2 saat içinde destek yanıt süresi. Galeriniz tek bir günü bile kaybetmez.",
+    image: "/assets/images/tasitpos/about-value-speed.png",
+    icon: "↗",
+  },
+  {
+    title: "Güvenilirlik",
+    text: "%99.9 uptime ve TCMB lisanslı altyapıyla işlemleriniz her koşulda güvende. PCI DSS uyumlu veri işleme.",
+    image: "/assets/images/tasitpos/about-value-trust.png",
+    icon: "◎",
+  },
+  {
+    title: "Ortaklık",
+    text: "Müşteri değil, iş ortağı. Galerinizin büyümesini kendi büyümemiz olarak görüyor, birlikte ilerleriz.",
+    image: "/assets/images/tasitpos/about-value-partnership.png",
+    icon: "↔",
+  },
+];
+
+const reasons = [
+  "TCMB lisanslı güvenli ödeme altyapısıyla %99.9 uptime",
+  "Fiziksel cihaz gerektirmeden sanal POS ve link ile ödeme",
+  "12 aya kadar esnek taksit yönetimi",
+  "Aynı gün kurulum — sıfır teknik yük",
+  "Türkiye geneli 7/24 uzman teknik destek",
+];
+
+const aboutStats = [
+  { value: "1000+", label: "Aktif galeri", note: "Türkiye genelinde", icon: "01" },
+  { value: "50.000+", label: "İşlem hacmi", note: "Aylık ortalama", icon: "02" },
+  { value: "%99.9", label: "Kesintisiz çalışma", note: "Yıllık uptime", icon: "03" },
+  { value: "12+", label: "Yıllık deneyim", note: "Sektörde", icon: "04" },
+];
+
 export default function AboutPage() {
   return (
     <SiteFrame>
-      <PageIntro
-        eyebrow="Hakkımızda"
-        title="Sektörün sesini dinledik, çözümü inşa ettik."
-        text="TaşıtPOS, oto galerilerin kredi kartına taksit sunması ve güvenli sanal POS ile tahsilat alması için geliştirildi."
-      />
+      <section className="about-hero">
+        <div className="container">
+          <h1>Hakkımızda</h1>
+          <p>
+            Türkiye'ye uzanan fintech vizyonuyla oto galerilerin ödeme süreçlerini
+            kökten dönüştürüyoruz.
+          </p>
+        </div>
+      </section>
 
-      <section className="section">
-        <div className="container split-layout">
-          <img
-            src="/assets/images/tasitpos/dealer-consultation.png"
-            alt="Oto galeri ödeme danışmanlığı görüşmesi"
-            className="feature-image"
-          />
-          <div className="copy-stack">
-            <SectionHeader
-              align="left"
-              eyebrow="Yaklaşım"
-              title="Sektörü bilen bir ortağın farkını yaşayın."
+      <section className="section about-story-section">
+        <div className="container about-story-grid">
+          <div>
+            <img
+              className="about-story-image"
+              src="/assets/images/tasitpos/about-team.png"
+              alt="TaşıtPOS ekibinin oto galeri ödeme çözümleri toplantısı"
             />
+            <p className="eyebrow">Hikayemiz</p>
+            <h2>Sektörün Sesini Dinledik, Çözümü İnşa Ettik</h2>
             <p>
-              Oto galericiliğin dinamiklerini bilen ekibimiz, satış anında
-              ihtiyaç duyulan ödeme kolaylığını pratik bir sanal POS akışına
-              dönüştürür.
+              TaşıtPOS, 2025 yılında Türkiye genelinde oto galerilere özel sanal
+              POS ve taksitli tahsilat çözümleri sunmak için kuruldu. Galerilerin
+              satış masasında yaşadığı ödeme, kapora ve taksit süreçlerini
+              sadeleştirmek için yola çıktık.
             </p>
             <p>
-              Müşteri aracı seçer, galeri taksit sunar, ödeme güvenle alınır.
-              TaşıtPOS bu süreci hızlı, sade ve güvenli hale getirir.
+              Amacımız yalnızca bir yazılım ürünü sunmak değil; oto galericiliğin
+              ritmini bilen, sahada test edilmiş ve hızlı devreye alınan güvenli
+              bir ödeme altyapısı sağlamaktır.
             </p>
           </div>
-        </div>
-      </section>
 
-      <section className="section soft compact-section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="Çalışma Prensibi"
-            title="Bugün başvurun, yarın tahsilat alın."
-          />
-          <div className="value-grid">
+          <div className="about-mission-stack">
             <article>
-              <span>01</span>
-              <h3>Kart taksit odaklı</h3>
-              <p>Müşteriye kredi kartıyla taksit seçeneği sunmak satış görüşmesini kolaylaştırır.</p>
+              <span>◎</span>
+              <h3>Misyonumuz</h3>
+              <p>
+                Türkiye'nin otomotiv galerileri için en güvenilir sanal POS
+                çözümünü sunmak.
+              </p>
             </article>
-            <article>
-              <span>02</span>
-              <h3>Online tahsilat</h3>
-              <p>Kapora, peşinat veya kalan tutar için güvenli ödeme linki kullanılabilir.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Kolay başlangıç</h3>
-              <p>Başvuru ve kurulum adımları galerinin hızlı ödeme almaya başlaması için planlanır.</p>
+            <article className="is-dark">
+              <span>◉</span>
+              <h3>Vizyonumuz</h3>
+              <p>Otomotiv fintech alanının öncü markası olmak.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="about-values-section">
         <div className="container">
-          <SectionHeader
-            eyebrow="Güven"
-            title="Güvenli ödeme altyapısı satışın merkezindedir."
-            text="TaşıtPOS ile müşterine güvenli ödeme, kredi kartına taksit ve online tahsilat imkanı sunarsın."
-          />
-          <Metrics compact />
+          <div className="about-section-heading">
+            <p className="eyebrow">İlkelerimiz</p>
+            <h2>Değerlerimiz</h2>
+            <p>Her kararımızın ve her ilişkimizin arkasındaki temel ilkeler.</p>
+          </div>
+          <div className="about-value-grid">
+            {values.map((item) => (
+              <article key={item.title}>
+                <img src={item.image} alt={`${item.title} değeri`} />
+                <span>{item.icon}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <CTA title="Bugün başvurun, yarın tahsilat almaya başlayın." />
+      <section className="section about-reasons-section">
+        <div className="container about-reasons-grid">
+          <div>
+            <p className="eyebrow">Neden TaşıtPOS?</p>
+            <h2>Sektörü Bilen Bir Ortağın Farkını Yaşayın</h2>
+            <p>
+              TaşıtPOS, yalnızca bir yazılım ürünü değil; oto galericiliğin
+              dinamiklerini bilen, sahada test edilmiş bir iş ortağıdır.
+              Platformumuz galeri süreçlerine uyum sağlar; galericiler platforma
+              uyum sağlamak zorunda kalmaz.
+            </p>
+            <ul>
+              {reasons.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <figure className="about-quote-card">
+            <img
+              src="/assets/images/tasitpos/about-quote.png"
+              alt="Oto galeride TaşıtPOS ödeme altyapısı"
+            />
+            <figcaption>
+              <blockquote>
+                “Oto galericiliğin kendine özgü ritmi ve talepleri vardır.
+                TaşıtPOS, bu ritmi anlayan ve ona göre tasarlanmış fintech
+                altyapısıdır. Her özelliğimiz, gerçek galericilerin gerçek
+                ihtiyaçlarından doğdu.”
+              </blockquote>
+              <div>
+                <span>TP</span>
+                <strong>TaşıtPOS Kurucu Ekibi</strong>
+                <small>Türkiye, 2025</small>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className="about-stats-section">
+        <div className="container about-stat-grid">
+          {aboutStats.map((item) => (
+            <article key={item.label}>
+              <span>{item.icon}</span>
+              <strong>{item.value}</strong>
+              <h3>{item.label}</h3>
+              <p>{item.note}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </SiteFrame>
   );
 }
