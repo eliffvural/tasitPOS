@@ -132,20 +132,22 @@ export default function Home() {
             <strong>Güven & Uyumluluk</strong>
             <span />
           </div>
-          <div className="trust-track">
-            {[
-              "3D Secure",
-              "Visa",
-              "Mastercard",
-              "Troy",
-              "TCMB Lisanslı",
-              "PCI DSS",
-              "SSL Güvenli",
-              "3D Secure",
-              "Visa",
-              "Mastercard",
-            ].map((item, index) => (
-              <span key={`${item}-${index}`}>{item}</span>
+          <div className="trust-slider">
+            {[0, 1].map((group) => (
+              <div className="trust-track" key={group} aria-hidden={group === 1}>
+                {[
+                  "3D Secure",
+                  "Visa",
+                  "Mastercard",
+                  "Troy",
+                  "TCMB Lisanslı",
+                  "PCI DSS",
+                  "SSL Güvenli",
+                  "Aynı Gün Kurulum",
+                ].map((item) => (
+                  <span key={`${item}-${group}`}>{item}</span>
+                ))}
+              </div>
             ))}
           </div>
         </div>
