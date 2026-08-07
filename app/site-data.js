@@ -74,21 +74,24 @@ export const processSteps = [
 export const testimonials = [
   {
     quote:
-      "Müşteriye taksit seçeneğini net sununca satış konuşması daha hızlı kapanıyor.",
+      "TaşıtPOS ile tahsilat süreçlerimiz tamamen değişti. Artık müşterilerimize telefon ile ödeme linki gönderip anında tahsilat alabiliyoruz. Kurulum gerçekten tek günde tamamlandı.",
     name: "Mehmet Yılmaz",
-    role: "Ankara Premium Otomotiv",
+    role: "Sahibi · Ankara Premium Otomotiv",
+    initials: "MY",
   },
   {
     quote:
-      "Kapora ve araç bedeli için ödeme linki göndermek günlük satış akışımızı rahatlattı.",
+      "Güvenli ödeme altyapısı sayesinde taksitli satışlarımız arttı. Panel üzerinden anlık işlem durumunu görebilmek günlük akışımızı çok daha verimli hale getirdi.",
     name: "Ahmet Kaya",
-    role: "İzmir Araç Merkezi",
+    role: "Genel Müdür · İzmir Araç Merkezi",
+    initials: "AK",
   },
   {
     quote:
-      "Sanal POS anlaşmasıyla müşteriye kartla ödeme alternatifi sunmak elimizi güçlendirdi.",
+      "Yıllardır fiziksel POS ile uğraşıyorduk. TaşıtPOS sayesinde her yerden, her cihazdan ödeme alıyor; müşteri memnuniyetimizi de artırıyoruz.",
     name: "Fatma Demir",
-    role: "İstanbul Galerisi",
+    role: "İşletme Ortağı · İstanbul Galerisi",
+    initials: "FD",
   },
 ];
 

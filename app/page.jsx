@@ -97,6 +97,34 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="testimonial-band">
+        <div className="container">
+          <div className="testimonial-grid">
+            {testimonials.map((item) => (
+              <figure key={item.name}>
+                <div className="quote-mark" aria-hidden="true">
+                  ”
+                </div>
+                <div className="testimonial-meta">
+                  <span className="stars" aria-label="5 yıldız">
+                    ★★★★★
+                  </span>
+                  <span className="verified">Doğrulanmış Müşteri</span>
+                </div>
+                <blockquote>“{item.quote}”</blockquote>
+                <figcaption>
+                  <span className="avatar">{item.initials}</span>
+                  <span>
+                    <strong>{item.name}</strong>
+                    <small>{item.role}</small>
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section dark">
         <div className="container">
           <div className="dark-grid">
@@ -107,26 +135,6 @@ export default function Home() {
               text="Galeriniz başvurusunu tamamlar, sanal POS altyapısı hazırlanır ve müşterinize kredi kartıyla ödeme alternatifi sunulur."
             />
             <ProcessList />
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="Müşteri Yorumları"
-            title="Galeriler TaşıtPOS ile tahsilat süreçlerini kolaylaştırıyor."
-          />
-          <div className="testimonial-grid">
-            {testimonials.map((item) => (
-              <figure key={item.name}>
-                <blockquote>“{item.quote}”</blockquote>
-                <figcaption>
-                  <strong>{item.name}</strong>
-                  <span>{item.role}</span>
-                </figcaption>
-              </figure>
-            ))}
           </div>
         </div>
       </section>
