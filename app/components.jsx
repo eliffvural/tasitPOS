@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { brand, navigation, processSteps, services, stats } from "./site-data";
+import {
+  brand,
+  navigation,
+  processSteps,
+  regulatedInfrastructureText,
+  services,
+  stats,
+} from "./site-data";
 
 const heroSlides = [
   {
@@ -14,7 +21,7 @@ const heroSlides = [
     alt: "Oto galeride kartlı ödeme alan danışman",
   },
   {
-    kicker: "TCMB lisanslı · güvenli ödeme altyapısı",
+    kicker: "TCMB lisanslı kuruluş altyapısı",
     title: "Otomotiv Sektörünün Güvenilir Ödeme Çözümü",
     text: "Bayiniz için özel tasarlanmış sanal POS altyapısı ile tahsilat süreçlerinizi tamamen dijitalleştirin.",
     image: "/assets/images/tasitpos/dealer-consultation.png",
@@ -45,12 +52,6 @@ export function SiteFrame({ children }) {
 function Logo() {
   return (
     <Link className="brand" href="/" aria-label={`${brand.name} ana sayfa`}>
-      <img
-        className="brand-mark"
-        src="/assets/images/tasitpos/logo-mark.svg"
-        alt=""
-        aria-hidden="true"
-      />
       <span className="brand-word">
         Taşıt<span>POS</span>
       </span>
@@ -147,7 +148,7 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© 2026 {brand.name}. Tüm hakları saklıdır.</span>
-        <span>TCMB lisanslı güvenli ödeme altyapısı</span>
+        <span>{regulatedInfrastructureText}</span>
       </div>
     </footer>
   );
@@ -241,7 +242,7 @@ export function PageIntro({ eyebrow, title, text }) {
           <h1>{title}</h1>
           <p>{text}</p>
           <div className="intro-badges" aria-label="Platform özellikleri">
-            <span>TCMB lisanslı altyapı</span>
+            <span>TCMB lisanslı kuruluş altyapısı</span>
             <span>12 aya taksit</span>
             <span>Güvenli ödeme linki</span>
           </div>

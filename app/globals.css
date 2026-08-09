@@ -92,14 +92,6 @@ img {
   font-weight: 850;
 }
 
-.brand-mark {
-  width: 38px;
-  height: 38px;
-  flex: 0 0 auto;
-  border-radius: var(--radius);
-  box-shadow: 0 10px 22px rgba(18, 166, 166, 0.2);
-}
-
 .brand-word {
   font-size: 22px;
   letter-spacing: 0;

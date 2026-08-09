@@ -1,9 +1,10 @@
 import { SiteFrame } from "../components";
+import { regulatedInfrastructureText } from "../site-data";
 
 export const metadata = {
   title: "Hakkımızda",
   description:
-    "TaşıtPOS, oto galeriler için TCMB lisanslı güvenli ödeme altyapısıyla sanal POS ve taksit çözümleri sunar.",
+    `${regulatedInfrastructureText} Oto galeriler için sanal POS ve taksit çözümleri sunar.`,
 };
 
 const values = [
@@ -21,7 +22,7 @@ const values = [
   },
   {
     title: "Güvenilirlik",
-    text: "%99.9 uptime ve TCMB lisanslı altyapıyla işlemleriniz her koşulda güvende. PCI DSS uyumlu veri işleme.",
+    text: `PCI DSS uyumlu veri işleme ile işlemleriniz her koşulda güvende. ${regulatedInfrastructureText}`,
     image: "/assets/images/tasitpos/about-value-trust.png",
     icon: "◎",
   },
@@ -34,7 +35,7 @@ const values = [
 ];
 
 const reasons = [
-  "TCMB lisanslı güvenli ödeme altyapısıyla %99.9 uptime",
+  regulatedInfrastructureText,
   "Fiziksel cihaz gerektirmeden sanal POS ve link ile ödeme",
   "12 aya kadar esnek taksit yönetimi",
   "Aynı gün kurulum — sıfır teknik yük",
@@ -56,7 +57,7 @@ export default function AboutPage() {
           <h1>Hakkımızda</h1>
           <p>
             Türkiye'ye uzanan fintech vizyonuyla oto galerilerin ödeme süreçlerini
-            kökten dönüştürüyoruz.
+            dönüştürüyoruz.
           </p>
         </div>
       </section>

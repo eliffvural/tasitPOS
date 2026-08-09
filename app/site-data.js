@@ -14,6 +14,9 @@ export const brand = {
   registerUrl: "/basvuru",
 };
 
+export const regulatedInfrastructureText =
+  "TaşıtPOS, TCMB lisanslı elektronik para ve ödeme kuruluşlarının güvenli ödeme altyapısıyla çalışmaktadır.";
+
 export const navigation = [
   { href: "/", label: "Ana Sayfa" },
   { href: "/hakkimizda", label: "Hakkımızda" },
@@ -26,13 +29,13 @@ export const stats = [
   { value: "1000+", label: "Aktif galeri hedefi" },
   { value: "12 aya", label: "Esnek taksit imkanı" },
   { value: "Aynı gün", label: "Kurulum ve başvuru desteği" },
-  { value: "TCMB", label: "Lisanslı güvenli altyapı" },
+  { value: "TCMB", label: "Lisanslı kuruluş altyapısı" },
 ];
 
 export const services = [
   {
     title: "Sanal POS Entegrasyonu",
-    text: "Müşterinize WhatsApp veya e-posta üzerinden ödeme linki gönderin. Kredi kartı ile güvenli bir şekilde ödeme yapsın. TCMB lisanslı güvenli ödeme altyapısı ile %99.9 uptime garantisi.",
+    text: `Müşterinize WhatsApp veya e-posta üzerinden ödeme linki gönderin. Kredi kartı ile güvenli bir şekilde ödeme yapsın. ${regulatedInfrastructureText}`,
     image: "/assets/images/tasitpos/service-pos.png",
     icon: "card",
     features: [
@@ -84,11 +87,11 @@ export const services = [
   },
   {
     title: "Güvenlik & Uyumluluk",
-    text: "Tüm işlemler Türkiye Cumhuriyet Merkez Bankası lisanslı güvenli ödeme altyapısı üzerinden gerçekleştirilir. PCI DSS uyumlu güvenli veri işleme.",
+    text: `PCI DSS uyumlu güvenli veri işleme. ${regulatedInfrastructureText}`,
     image: "/assets/images/tasitpos/service-support.png",
     icon: "shield",
     features: [
-      "TCMB lisanslı altyapı",
+      "TCMB lisanslı kuruluş altyapısı",
       "PCI DSS uyumlu",
       "SSL şifreleme",
       "KVKK uyumlu veri işleme",

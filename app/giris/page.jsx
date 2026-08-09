@@ -18,7 +18,7 @@ export default function LoginPage() {
             <ul className="auth-points">
               <li>Anlık tahsilat ve ödeme takibi</li>
               <li>Taksit ve vade yönetimi</li>
-              <li>TCMB lisanslı güvenli altyapı</li>
+              <li>TCMB lisanslı kuruluş altyapısı</li>
             </ul>
           </aside>
           <LoginForm />

@@ -4,7 +4,7 @@ import {
   ServiceGrid,
   SiteFrame,
 } from "./components";
-import { brand, testimonials } from "./site-data";
+import { brand, regulatedInfrastructureText, testimonials } from "./site-data";
 
 export default function Home() {
   return (
@@ -32,7 +32,7 @@ export default function Home() {
               </p>
               <div className="platform-points">
                 <span>Aynı gün kurulum, sıfır teknik yük</span>
-                <span>TCMB lisanslı güvenli ödeme altyapısı</span>
+                <span>TCMB lisanslı kuruluş altyapısı</span>
                 <span>12 aya kadar esnek taksit yönetimi</span>
                 <span>Gerçek zamanlı ödeme takibi</span>
               </div>
@@ -137,7 +137,7 @@ export default function Home() {
                   "Visa",
                   "Mastercard",
                   "Troy",
-                  "TCMB Lisanslı",
+                  "Lisanslı Kuruluş Altyapısı",
                   "PCI DSS",
                   "SSL Güvenli",
                   "Aynı Gün Kurulum",
@@ -163,6 +163,8 @@ export default function Home() {
               <p>
                 Başvurunuzu tamamlayın, ekibimiz aynı gün sisteminizi kurar.
                 Türkiye genelinde oto galeriler için güvenli sanal POS altyapısı.
+                {" "}
+                {regulatedInfrastructureText}
               </p>
               <div className="setup-badges">
                 <span>Kurulum ücretsiz</span>
