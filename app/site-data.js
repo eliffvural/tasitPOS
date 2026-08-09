@@ -29,7 +29,10 @@ export const stats = [
   { value: "1000+", label: "Aktif galeri hedefi" },
   { value: "12 aya", label: "Esnek taksit imkanı" },
   { value: "Aynı gün", label: "Kurulum ve başvuru desteği" },
-  { value: "TCMB", label: "Lisanslı kuruluş altyapısı" },
+  {
+    value: "TCMB",
+    label: "TCMB lisanslı elektronik para ve ödeme kuruluşlarının altyapısı",
+  },
 ];
 
 export const services = [
