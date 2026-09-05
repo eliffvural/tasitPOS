@@ -1,0 +1,4 @@
+import { documentAccessHandler } from "../../../../../lib/server/document-access.mjs";
+
+export const runtime = "nodejs";
+export const GET = documentAccessHandler;

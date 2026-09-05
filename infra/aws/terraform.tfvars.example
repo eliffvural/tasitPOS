@@ -1,0 +1,8 @@
+aws_region          = "eu-central-1"
+environment         = "production"
+document_bucket_name = "replace-with-unique-private-document-bucket"
+audit_bucket_name    = "replace-with-unique-audit-log-bucket"
+certificate_arn      = "arn:aws:acm:eu-central-1:123456789012:certificate/replace-me"
+hosted_zone_id       = "Z0123456789REPLACE"
+domain_name          = "tasitpos.example.com"
+alarm_email          = "security@example.com"

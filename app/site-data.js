@@ -23,6 +23,7 @@ export const navigation = [
   { href: "/hizmetlerimiz", label: "Hizmetlerimiz" },
   { href: "/referanslar", label: "Referanslar" },
   { href: "/iletisim", label: "İletişim" },
+  { href: "/yardim-merkezi", label: "Yardım" },
 ];
 
 export const stats = [

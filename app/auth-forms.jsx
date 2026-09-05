@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { sendToBrandMail } from "./mail";
 import { brand } from "./site-data";
 
@@ -302,6 +303,7 @@ function consentLine(field, consentData) {
 }
 
 export function LoginForm() {
+  const router = useRouter();
   const [status, setStatus] = useState("idle");
 
   function handleSubmit(event) {
@@ -309,13 +311,8 @@ export function LoginForm() {
     const data = new FormData(event.currentTarget);
     const email = String(data.get("email") || "").trim();
 
-    sendToBrandMail("TaşıtPOS Müşteri Girişi / Destek Talebi", [
-      `E-posta: ${email}`,
-      "",
-      "Kullanıcı panel girişi veya hesap desteği talep ediyor.",
-      `Telefon destek: ${brand.phone}`,
-    ]);
-    setStatus("sent");
+    window.sessionStorage.setItem("tasitpos-demo-user", email);
+    router.push("/panel");
   }
 
   return (
