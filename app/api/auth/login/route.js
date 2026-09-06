@@ -33,7 +33,7 @@ export async function POST(request) {
   if (!principal) {
     failed(key);
     writeSecurityAudit("LOGIN_FAILED", { email_hash_hint: String(body.email || "").trim().toLowerCase().slice(0, 3) });
-    return Response.json({ success: false, error_code: "ERR_INVALID_CREDENTIALS", message: "E-posta veya parola hatalı." }, { status: 401 });
+    return Response.json({ success: false, error_code: "ERR_INVALID_CREDENTIALS", message: "E-posta veya parola hatalı. Hesabınız yoksa kayıt olun." }, { status: 401 });
   }
   attempts.delete(key);
   const remember = Boolean(body.remember);

@@ -337,7 +337,7 @@ export function LoginForm() {
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.success) {
         setStatus("idle");
-        setError(result.message || "E-posta veya parola hatalı.");
+        setError(result.message || "E-posta veya parola hatalı. Hesabınız yoksa kayıt olun.");
         return;
       }
       router.push("/panel");
@@ -398,8 +398,137 @@ export function LoginForm() {
       </button>
 
       <p className="auth-switch">
-        Henüz üye değil misiniz?{" "}
-        <Link href="/basvuru">Hızlı başvuru yapın</Link>
+        Hesabınız yok mu?{" "}
+        <Link href="/kayit">Kayıt olun</Link>
+      </p>
+      <p className="auth-switch">
+        Galeri başvurusu için{" "}
+        <Link href="/basvuru">hızlı başvuru yapın</Link>
+      </p>
+    </form>
+  );
+}
+
+export function SignupForm() {
+  const router = useRouter();
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = String(data.get("email") || "").trim();
+    const password = String(data.get("password") || "");
+    const passwordConfirm = String(data.get("password_confirm") || "");
+    const displayName = String(data.get("display_name") || "").trim();
+
+    if (!email || !password) {
+      setError("E-posta ve parola zorunludur.");
+      return;
+    }
+    if (password.length < 8) {
+      setError("Parola en az 8 karakter olmalıdır.");
+      return;
+    }
+    if (password !== passwordConfirm) {
+      setError("Parola ile tekrarı aynı olmalıdır.");
+      return;
+    }
+
+    setStatus("loading");
+    setError("");
+
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({
+          email,
+          password,
+          password_confirm: passwordConfirm,
+          display_name: displayName,
+        }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) {
+        setStatus("idle");
+        setError(result.message || "Hesap oluşturulamadı.");
+        return;
+      }
+      router.push("/panel");
+      router.refresh();
+    } catch {
+      setStatus("idle");
+      setError("Kayıt şu anda tamamlanamadı. Lütfen tekrar deneyin.");
+    }
+  }
+
+  return (
+    <form className="auth-form" onSubmit={handleSubmit}>
+      <div className="auth-form-head">
+        <h1>Kayıt Ol</h1>
+        <p>E-posta ve parola ile panel hesabı oluşturun. Şifreniz açık metin olarak saklanmaz.</p>
+      </div>
+
+      {error ? (
+        <div className="auth-feedback is-error" role="alert">
+          <strong>Kayıt tamamlanamadı.</strong>
+          <p>{error}</p>
+        </div>
+      ) : null}
+
+      <label>
+        Galeri adı
+        <input
+          type="text"
+          name="display_name"
+          placeholder="Galeri unvanı (isteğe bağlı)"
+          autoComplete="organization"
+        />
+      </label>
+      <label>
+        E-posta <em>*</em>
+        <input
+          type="email"
+          name="email"
+          placeholder="ornek@galeri.com"
+          autoComplete="email"
+          required
+        />
+      </label>
+      <label>
+        Parola <em>*</em>
+        <input
+          type="password"
+          name="password"
+          placeholder="En az 8 karakter"
+          autoComplete="new-password"
+          minLength={8}
+          required
+        />
+      </label>
+      <label>
+        Parola tekrar <em>*</em>
+        <input
+          type="password"
+          name="password_confirm"
+          placeholder="Parolayı tekrar yazın"
+          autoComplete="new-password"
+          minLength={8}
+          required
+        />
+      </label>
+      <button className="btn btn-primary auth-submit" type="submit" disabled={status === "loading"}>
+        {status === "loading" ? "Hesap oluşturuluyor…" : "Hesap oluştur"}
+      </button>
+
+      <p className="auth-switch">
+        Zaten hesabınız var mı? <Link href="/giris">Giriş yapın</Link>
+      </p>
+      <p className="auth-switch">
+        Kurumsal başvuru ve evrak için{" "}
+        <Link href="/basvuru">hızlı başvuruya gidin</Link>
       </p>
     </form>
   );
