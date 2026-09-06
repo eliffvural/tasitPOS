@@ -45,6 +45,18 @@ function payoutCountdown(date, now) {
   return `${new Date(date).toLocaleDateString("tr-TR")} ${clock} · ${days ? `${days} gün ` : ""}${hours} sa ${minutes} dk kaldı`;
 }
 
+function authFetch(url, options = {}) {
+  return fetch(url, { credentials: "same-origin", cache: "no-store", ...options });
+}
+
+async function requireSession(response) {
+  if (response.status === 401) {
+    window.location.replace("/giris");
+    throw new Error("unauthorized");
+  }
+  return response;
+}
+
 function downloadCsv(rows) {
   const header = ["Tarih", "Açıklama", "Borç", "Alacak", "Vergi No", "İşlem No", "Plaka", "Brüt", "Komisyon", "Net Hakediş", "Durum"];
   const lines = rows.map((row) => [row.payout, `${row.plate} ${row.model}`, row.commission, row.net, "", row.transaction_id, row.plate, row.gross, row.commission, row.net, row.status]);
@@ -58,7 +70,7 @@ function downloadCsv(rows) {
   URL.revokeObjectURL(url);
 }
 
-export function PanelApp() {
+export function PanelApp({ accountEmail = "" }) {
   const [view, setView] = useState("dashboard");
   const [transactions, setTransactions] = useState([]);
   const [netAmount, setNetAmount] = useState("");
@@ -77,13 +89,12 @@ export function PanelApp() {
   }, [accounting, transactions]);
 
   async function refreshPayoutData() {
-    const headers = { Authorization: "Bearer demo-token" };
     const today = new Date();
     const accountingUrl = `/api/accounting/monthly-report?year=${today.getFullYear()}&month=${today.getMonth() + 1}`;
     const [summaryResponse, transactionsResponse, accountingResponse] = await Promise.all([
-      fetch("/api/payouts/summary", { headers, cache: "no-store" }),
-      fetch("/api/payouts/transactions?page=1&limit=100", { headers, cache: "no-store" }),
-      fetch(accountingUrl, { headers, cache: "no-store" }),
+      authFetch("/api/payouts/summary").then(requireSession),
+      authFetch("/api/payouts/transactions?page=1&limit=100").then(requireSession),
+      authFetch(accountingUrl).then(requireSession),
     ]);
     const [summaryResult, transactionsResult, accountingResult] = await Promise.all([summaryResponse.json(), transactionsResponse.json(), accountingResponse.json()]);
     if (summaryResponse.ok && summaryResult.success) setSummary(summaryResult.data);
@@ -92,7 +103,7 @@ export function PanelApp() {
   }
 
   async function refreshAccountants() {
-    const response = await fetch("/api/accounting/subaccounts", { headers: { Authorization: "Bearer demo-token" }, cache: "no-store" });
+    const response = await requireSession(await authFetch("/api/accounting/subaccounts"));
     const result = await response.json();
     if (response.ok && result.success) setAccountants(result.data);
   }
@@ -114,7 +125,7 @@ export function PanelApp() {
     const controller = new AbortController();
     async function connectPaymentEvents() {
       const response = await fetch("/api/events", {
-        headers: { Authorization: "Bearer demo-token" },
+        credentials: "same-origin",
         signal: controller.signal,
       });
       if (!response.ok || !response.body) return;
@@ -151,7 +162,7 @@ export function PanelApp() {
     event.preventDefault();
     setFeedback({ type: "loading", text: "İşlem doğrulanıyor…" });
     const formData = new FormData(event.currentTarget);
-    const response = await fetch("/api/transactions/create-link", { method: "POST", headers: { Authorization: "Bearer demo-token" }, body: formData });
+    const response = await requireSession(await authFetch("/api/transactions/create-link", { method: "POST", body: formData }));
     const result = await response.json();
     if (!response.ok) {
       setFeedback({ type: "error", text: result.message });
@@ -170,7 +181,7 @@ export function PanelApp() {
     const refundType = String(data.get("refund_type"));
     const amount = Number(data.get("amount"));
     const reason = String(data.get("reason") || "").trim();
-    const response = await fetch("/api/transactions/refund", { method: "POST", headers: { Authorization: "Bearer demo-token", "Content-Type": "application/json", "X-Refund-Confirmation": "CONFIRM", "Idempotency-Key": crypto.randomUUID() }, body: JSON.stringify({ transaction_id: refundTarget.transaction_id, refund_type: refundType, amount, reason }) });
+    const response = await requireSession(await authFetch("/api/transactions/refund", { method: "POST", headers: { "Content-Type": "application/json", "X-Refund-Confirmation": "CONFIRM", "Idempotency-Key": crypto.randomUUID() }, body: JSON.stringify({ transaction_id: refundTarget.transaction_id, refund_type: refundType, amount, reason }) }));
     const result = await response.json();
     if (response.ok) {
       await refreshPayoutData();
@@ -184,11 +195,11 @@ export function PanelApp() {
   async function reconcileInvoice(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const response = await fetch("/api/accounting/monthly-report", {
+    const response = await requireSession(await authFetch("/api/accounting/monthly-report", {
       method: "POST",
-      headers: { Authorization: "Bearer demo-token", "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "RECONCILE_CUSTOMER_INVOICE", transaction_id: invoiceTarget.transaction_id, invoice_no: formData.get("invoice_no") }),
-    });
+    }));
     const result = await response.json();
     if (!response.ok) return setFeedback({ type: "error", text: result.message });
     await refreshPayoutData();
@@ -200,11 +211,11 @@ export function PanelApp() {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const response = await fetch("/api/accounting/subaccounts", {
+    const response = await requireSession(await authFetch("/api/accounting/subaccounts", {
       method: "POST",
-      headers: { Authorization: "Bearer demo-token", "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: formData.get("email"), tckn: formData.get("tckn") }),
-    });
+    }));
     const result = await response.json();
     if (!response.ok) return setFeedback({ type: "error", text: result.message });
     form.reset();
@@ -213,24 +224,30 @@ export function PanelApp() {
   }
 
   async function revokeAccountant(id) {
-    const response = await fetch(`/api/accounting/subaccounts?id=${encodeURIComponent(id)}`, { method: "DELETE", headers: { Authorization: "Bearer demo-token" } });
+    const response = await requireSession(await authFetch(`/api/accounting/subaccounts?id=${encodeURIComponent(id)}`, { method: "DELETE" }));
     const result = await response.json();
     if (!response.ok) return setFeedback({ type: "error", text: result.message });
     await refreshAccountants();
     setFeedback({ type: "success", text: "Muhasebeci alt hesabının erişimi kaldırıldı." });
   }
 
+  async function logout() {
+    await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
+    window.location.replace("/giris");
+  }
+
   return (
     <div className="panel-shell">
       <aside className="panel-sidebar">
         <Link href="/" className="panel-logo">Taşıt<span>POS</span></Link>
-        <p className="panel-account"><strong>Demo Galeri A.Ş.</strong><span>Aktif üye işyeri · Demo ortamı</span></p>
+        <p className="panel-account"><strong>{accountEmail || "Galeri hesabı"}</strong><span>Aktif üye işyeri</span></p>
         <nav>
           <button className={view === "dashboard" ? "active" : ""} onClick={() => setView("dashboard")}>Genel Bakış</button>
           <button className={view === "new" ? "active" : ""} onClick={() => setView("new")}>Yeni Tahsilat</button>
           <button className={view === "transactions" ? "active" : ""} onClick={() => setView("transactions")}>İşlemler & İadeler</button>
           <button className={view === "accounting" ? "active" : ""} onClick={() => setView("accounting")}>Muhasebe</button>
           <Link href="/yardim-merkezi">Yardım Merkezi</Link>
+          <button type="button" onClick={logout}>Çıkış yap</button>
         </nav>
         <div className="panel-security-note">Kart verisi TaşıtPOS sistemine girilmez veya kaydedilmez. Ödeme, EPK güvenli alanında tamamlanır.</div>
       </aside>
@@ -299,7 +316,7 @@ function TransactionTable({ rows, onRefund, onInvoice, now, accounting = false }
     await navigator.clipboard.writeText(value);
   }
   async function downloadReceipt(row) {
-    const response = await fetch(row.receiptUrl, { headers: { Authorization: "Bearer demo-token" } });
+    const response = await fetch(row.receiptUrl, { credentials: "same-origin" });
     if (!response.ok) return;
     const blob = await response.blob();
     const url = URL.createObjectURL(blob);

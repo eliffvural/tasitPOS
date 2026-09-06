@@ -1,4 +1,4 @@
-import { authenticateBearer } from "../../../../lib/server/auth.mjs";
+import { authenticateRequest } from "../../../../lib/server/auth.mjs";
 import { processRefund } from "../../../../lib/server/refund-transaction.mjs";
 
 export const runtime = "nodejs";
@@ -14,7 +14,7 @@ const statusByError = {
 
 export async function POST(request) {
   let principal;
-  try { principal = authenticateBearer(request.headers.get("authorization") || ""); }
+  try { principal = authenticateRequest(request); }
   catch (error) { return Response.json({ success: false, error_code: error.message, message: "Kimlik doğrulama servisi yapılandırılmadı." }, { status: 503 }); }
   if (!principal) return Response.json({ success: false, error_code: "ERR_UNAUTHORIZED", message: "Geçerli Bearer erişim belirteci zorunludur." }, { status: 401 });
   if (principal.role !== "GALLERY") return Response.json({ success: false, error_code: "ERR_FORBIDDEN", message: "Muhasebeci erişimiyle iptal/iade başlatılamaz." }, { status: 403 });

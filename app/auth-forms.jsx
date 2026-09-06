@@ -175,7 +175,12 @@ const documentUploadFields = [
 const consentFields = [
   {
     id: "tasitposAgreement",
-    label: "TaşıtPOS Kullanıcı ve Hizmet Sözleşmesi'ni okudum, onaylıyorum.",
+    label:
+      "TaşıtPOS Platformu Üyelik ve Sanal POS Kullanım Sözleşmesi'ni okudum, onaylıyorum.",
+    documentHref:
+      "/documents/tasitpos-platformu-uyelik-ve-sanal-pos-kullanim-sozlesmesi.pdf",
+    downloadHref:
+      "/documents/tasitpos-platformu-uyelik-ve-sanal-pos-kullanim-sozlesmesi.docx",
   },
   {
     id: "kvkkConsent",
@@ -305,14 +310,42 @@ function consentLine(field, consentData) {
 export function LoginForm() {
   const router = useRouter();
   const [status, setStatus] = useState("idle");
+  const [error, setError] = useState("");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = String(data.get("email") || "").trim();
+    const password = String(data.get("password") || "");
+    const remember = data.get("remember") === "on";
 
-    window.sessionStorage.setItem("tasitpos-demo-user", email);
-    router.push("/panel");
+    if (!email || !password) {
+      setError("E-posta ve parola zorunludur.");
+      return;
+    }
+
+    setStatus("loading");
+    setError("");
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ email, password, remember }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) {
+        setStatus("idle");
+        setError(result.message || "E-posta veya parola hatalı.");
+        return;
+      }
+      router.push("/panel");
+      router.refresh();
+    } catch {
+      setStatus("idle");
+      setError("Giriş şu anda tamamlanamadı. Lütfen tekrar deneyin.");
+    }
   }
 
   return (
@@ -322,52 +355,47 @@ export function LoginForm() {
         <p>TaşıtPOS paneline giriş yaparak tahsilat ve işlemlerinizi yönetin.</p>
       </div>
 
-      {status === "sent" ? (
-        <div className="auth-feedback" role="status">
-          <strong>Mailiniz hazırlandı.</strong>
-          <p>
-            Talep <strong>{brand.email}</strong> adresine yönlendirildi. E-posta
-            uygulamanızdan göndermeniz yeterli.
-          </p>
+      {error ? (
+        <div className="auth-feedback is-error" role="alert">
+          <strong>Giriş yapılamadı.</strong>
+          <p>{error}</p>
         </div>
-      ) : (
-        <>
-          <label>
-            E-posta <em>*</em>
-            <input
-              type="email"
-              name="email"
-              placeholder="ornek@galeri.com"
-              autoComplete="email"
-              required
-            />
-          </label>
-          <label>
-            Parola <em>*</em>
-            <input
-              type="password"
-              name="password"
-              placeholder="••••••••"
-              autoComplete="current-password"
-              required
-            />
-          </label>
-          <div className="auth-row">
-            <label className="auth-check">
-              <input type="checkbox" name="remember" />
-              Beni hatırla
-            </label>
-            <a
-              href={`${brand.emailHref}?subject=${encodeURIComponent("TaşıtPOS Parola Sıfırlama")}`}
-            >
-              Parolamı unuttum
-            </a>
-          </div>
-          <button className="btn btn-primary auth-submit" type="submit">
-            Giriş Yap
-          </button>
-        </>
-      )}
+      ) : null}
+
+      <label>
+        E-posta <em>*</em>
+        <input
+          type="email"
+          name="email"
+          placeholder="ornek@galeri.com"
+          autoComplete="email"
+          required
+        />
+      </label>
+      <label>
+        Parola <em>*</em>
+        <input
+          type="password"
+          name="password"
+          placeholder="••••••••"
+          autoComplete="current-password"
+          required
+        />
+      </label>
+      <div className="auth-row">
+        <label className="auth-check">
+          <input type="checkbox" name="remember" />
+          Beni hatırla
+        </label>
+        <a
+          href={`${brand.emailHref}?subject=${encodeURIComponent("TaşıtPOS Parola Sıfırlama")}`}
+        >
+          Parolamı unuttum
+        </a>
+      </div>
+      <button className="btn btn-primary auth-submit" type="submit" disabled={status === "loading"}>
+        {status === "loading" ? "Kontrol ediliyor…" : "Giriş Yap"}
+      </button>
 
       <p className="auth-switch">
         Henüz üye değil misiniz?{" "}
@@ -1069,16 +1097,29 @@ export function RegisterForm() {
         <>
           <div className="contract-consent-list">
             {consentFields.map((field) => (
-              <label className="contract-consent-option" key={field.id}>
-                <input
-                  type="checkbox"
-                  name={field.id}
-                  checked={consentData[field.id]}
-                  onChange={handleConsentChange}
-                  required
-                />
-                <span>{field.label}</span>
-              </label>
+              <div className="contract-consent-option" key={field.id}>
+                <label htmlFor={`consent-${field.id}`}>
+                  <input
+                    id={`consent-${field.id}`}
+                    type="checkbox"
+                    name={field.id}
+                    checked={consentData[field.id]}
+                    onChange={handleConsentChange}
+                    required
+                  />
+                  <span>{field.label}</span>
+                </label>
+                {field.documentHref ? (
+                  <div className="contract-document-actions">
+                    <a href={field.documentHref} target="_blank" rel="noreferrer">
+                      Sözleşmeyi görüntüle
+                    </a>
+                    <a href={field.downloadHref} download>
+                      Word olarak indir
+                    </a>
+                  </div>
+                ) : null}
+              </div>
             ))}
           </div>
 

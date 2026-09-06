@@ -3398,14 +3398,19 @@ img {
 }
 
 .contract-consent-option {
-  display: grid !important;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: flex-start;
-  gap: 12px !important;
+  display: grid;
+  gap: 12px;
   padding: 16px;
   border: 1px solid #d8dee8;
   border-radius: 10px;
   background: #f8fafc;
+}
+
+.contract-consent-option > label {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: flex-start;
+  gap: 12px !important;
   cursor: pointer;
 }
 
@@ -3422,6 +3427,27 @@ img {
   font-size: 14px;
   line-height: 1.5;
   font-weight: 800;
+}
+
+.contract-document-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  padding-left: 30px;
+}
+
+.contract-document-actions a {
+  color: var(--navy-800);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(31, 75, 131, 0.3);
+  text-underline-offset: 3px;
+}
+
+.contract-document-actions a:hover {
+  color: var(--red-700);
+  text-decoration-color: currentColor;
 }
 
 .auth-row {
@@ -3494,6 +3520,11 @@ img {
   border-radius: 12px;
   background: #eef8f2;
   border: 1px solid rgba(34, 160, 107, 0.24);
+}
+
+.auth-feedback.is-error {
+  background: #fff4f2;
+  border-color: rgba(180, 35, 24, 0.18);
 }
 
 .auth-feedback strong {

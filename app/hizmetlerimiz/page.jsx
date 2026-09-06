@@ -59,7 +59,7 @@ export default function ServicesPage() {
               </p>
               <div className="setup-checks">
                 <span>Kurulum ücretsiz</span>
-                <span>Bağlayıcı sözleşme yok</span>
+                <span>Sözleşme önceden incelenebilir</span>
                 <span>24 saatte devreye al</span>
               </div>
               <div className="setup-actions">

@@ -2,7 +2,7 @@ import {
   validatePaymentInput,
 } from "../../../../lib/tasitpos.mjs";
 import { createTransaction } from "../../../../lib/server/create-transaction.mjs";
-import { authenticateBearer } from "../../../../lib/server/auth.mjs";
+import { authenticateRequest } from "../../../../lib/server/auth.mjs";
 
 export const runtime = "nodejs";
 
@@ -12,7 +12,7 @@ function jsonError(status, errorCode, message) {
 
 export async function POST(request) {
   let principal;
-  try { principal = authenticateBearer(request.headers.get("authorization") || ""); }
+  try { principal = authenticateRequest(request); }
   catch (error) { return jsonError(503, error.message, "Kimlik doğrulama servisi yapılandırılmadı."); }
   if (!principal) return jsonError(401, "ERR_UNAUTHORIZED", "Geçerli Bearer erişim belirteci zorunludur.");
   if (principal.role !== "GALLERY") return jsonError(403, "ERR_FORBIDDEN", "Muhasebeci erişimiyle tahsilat oluşturulamaz.");

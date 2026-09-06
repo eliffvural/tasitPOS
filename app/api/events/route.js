@@ -1,10 +1,10 @@
-import { authenticateBearer } from "../../../lib/server/auth.mjs";
+import { authenticateRequest } from "../../../lib/server/auth.mjs";
 import { subscribePaymentEvents } from "../../../lib/server/payment-events.mjs";
 
 export const runtime = "nodejs";
 
 export async function GET(request) {
-  const principal = authenticateBearer(request.headers.get("authorization") || "");
+  const principal = authenticateRequest(request);
   if (!principal) return Response.json({ success: false, error_code: "ERR_UNAUTHORIZED", message: "Geçerli Bearer erişim belirteci zorunludur." }, { status: 401 });
 
   const encoder = new TextEncoder();

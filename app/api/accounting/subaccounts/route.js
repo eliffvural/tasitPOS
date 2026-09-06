@@ -1,4 +1,4 @@
-import { authenticateBearer } from "../../../../lib/server/auth.mjs";
+import { authenticateRequest } from "../../../../lib/server/auth.mjs";
 import { createAccountantSubaccount, listAccountantSubaccounts, revokeAccountantSubaccount } from "../../../../lib/server/accountant-subaccounts.mjs";
 import { writeSecurityAudit } from "../../../../lib/server/security-audit.mjs";
 
@@ -9,7 +9,7 @@ function fail(status, errorCode, message) {
 }
 
 function galleryPrincipal(request) {
-  const principal = authenticateBearer(request.headers.get("authorization") || "");
+  const principal = authenticateRequest(request);
   return principal?.role === "GALLERY" ? principal : null;
 }
 
