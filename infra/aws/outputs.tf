@@ -2,6 +2,8 @@ output "alb_dns_name" { value = aws_lb.app.dns_name }
 output "private_subnet_ids" { value = values(aws_subnet.private)[*].id }
 output "app_security_group_id" { value = aws_security_group.app.id }
 output "ecs_cluster_arn" { value = aws_ecs_cluster.app.arn }
+output "ecs_service_name" { value = aws_ecs_service.app.name }
+output "ecs_task_definition_arn" { value = aws_ecs_task_definition.app.arn }
 output "database_secret_arn" {
   value     = aws_db_instance.postgres.master_user_secret[0].secret_arn
   sensitive = true

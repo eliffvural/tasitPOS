@@ -30,11 +30,15 @@ const guideSteps = [
 ];
 
 const faqs = [
+  ["Bu yöntem yasal mı; ceza riski var mı?", "TaşıtPOS akışı gerçek ve belgeli araç satışı için tasarlanmıştır; ancak hiçbir platform tüm işlemler için cezasızlık garantisi veremez. EPK sözleşmesine, kart sahibi onayına, fatura düzenine ve güncel mevzuata uyulmalı; özel durumlar hukukçu ve mali müşavirle değerlendirilmelidir."],
   ["Her işlemde ruhsat veya noter belgesi gerekli mi?", "Evet. Araç tescil belgesi veya noter satış belgesi yüklenmeden ödeme bağlantısı oluşturulamaz."],
+  ["Aracı alan kişi dışında birinin kartı kullanılabilir mi?", "Yalnızca ödeme kuruluşunun kuralları izin veriyorsa, kart sahibinin açık onayı ve 3D Secure doğrulamasıyla değerlendirilebilir. Kart sahibi, alıcı ve satış belgesi uyuşmazlıkları ilave inceleme veya ret nedeni olabilir."],
   ["Kart bilgileri TaşıtPOS'ta saklanır mı?", "Hayır. Kart verileri TaşıtPOS sunucularına alınmamalı; ödeme kuruluşunun PCI DSS uyumlu güvenli alanında işlenmelidir."],
   ["Komisyon nasıl hesaplanır?", "Mevcut ürün kurgusunda %24,90 EPK maliyeti ve %1,20 platform payı olmak üzere toplam %26,10 net araç bedeline eklenir. Canlı oran sözleşme ve EPK tarifesiyle doğrulanmalıdır."],
+  ["Üyelik ücreti veya gizli maliyet var mı?", "Demo akışında üyelik bedeli tanımlı değildir. Canlı kullanımda geçerli sözleşmede gösterilen komisyon, vergi ve varsa hizmet bedelleri esas alınır; panel işlem öncesinde güncel maliyet kırılımını gösterir."],
   ["Hakediş ne zaman aktarılır?", "Planlanan akış ertesi iş günü transferidir. Kesin saat ve valör, anlaşmalı ödeme kuruluşu ve banka çalışma takvimine bağlıdır."],
   ["Fatura hangi tutardan kesilir?", "Belge kurgusuna göre müşteri faturası karttan çekilen brüt tutarla eşleşmelidir. Vergisel uygulamayı mali müşavirinizle ve güncel mevzuatla doğrulayın."],
+  ["Komisyon gider olarak kaydedilebilir mi?", "EPK komisyon belgesi ile TaşıtPOS hizmet faturası ayrı kalemler halinde raporlanır. Bunların giderleştirilmesi ve KDV uygulaması işletmenin durumuna göre mali müşavir tarafından doğrulanmalıdır."],
   ["İptal ve iade arasındaki fark nedir?", "Gün sonu öncesi işlem iptal (void), sonrasında iade olarak işlenir. Canlı sonuç ve karta yansıma süresi EPK/banka kurallarına bağlıdır."],
   ["Yetersiz bakiye veya banka reddi olursa ne olur?", "İşlem başarısız olarak kaydedilir, hakediş oluşmaz ve panelde bankanın güvenli hata açıklaması gösterilir. Kart bilgileri TaşıtPOS'a gelmez."],
   ["3D Secure ekranı kapatılırsa ne olur?", "İşlem geçici olarak 3D Secure bekleniyor durumunda kalır. Yapılandırılmış süre dolduğunda otomatik EXPIRED olur ve galeri için hakediş oluşturulmaz."],

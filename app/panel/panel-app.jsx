@@ -67,6 +67,7 @@ export function PanelApp() {
   const [pricing, setPricing] = useState({ epkRate: 0.249, platformRate: 0.012, mode: "DIRECT_MARKUP" });
   const [summary, setSummary] = useState(emptySummary);
   const [accounting, setAccounting] = useState(emptyAccounting);
+  const [accountants, setAccountants] = useState([]);
   const [invoiceTarget, setInvoiceTarget] = useState(null);
   const [now, setNow] = useState(Date.now());
   const breakdown = useMemo(() => calculateFinancialBreakdown(netAmount || 0, pricing.mode, pricing), [netAmount, pricing]);
@@ -90,8 +91,15 @@ export function PanelApp() {
     if (accountingResponse.ok && accountingResult.success) setAccounting(accountingResult.data);
   }
 
+  async function refreshAccountants() {
+    const response = await fetch("/api/accounting/subaccounts", { headers: { Authorization: "Bearer demo-token" }, cache: "no-store" });
+    const result = await response.json();
+    if (response.ok && result.success) setAccountants(result.data);
+  }
+
   useEffect(() => {
     refreshPayoutData().catch(() => setFeedback({ type: "error", text: "Hakediş verileri alınamadı." }));
+    refreshAccountants().catch(() => {});
     fetch("/api/config/pricing").then((response) => response.json()).then((result) => {
       if (result.success) setPricing({ epkRate: result.data.epk_rate, platformRate: result.data.platform_rate, mode: result.data.calculation_mode });
     }).catch(() => {});
@@ -188,6 +196,30 @@ export function PanelApp() {
     setFeedback({ type: "success", text: `${result.data.invoice_no} numaralı satış faturası işlemle eşleştirildi.` });
   }
 
+  async function addAccountant(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const response = await fetch("/api/accounting/subaccounts", {
+      method: "POST",
+      headers: { Authorization: "Bearer demo-token", "Content-Type": "application/json" },
+      body: JSON.stringify({ email: formData.get("email"), tckn: formData.get("tckn") }),
+    });
+    const result = await response.json();
+    if (!response.ok) return setFeedback({ type: "error", text: result.message });
+    form.reset();
+    await refreshAccountants();
+    setFeedback({ type: "success", text: "Muhasebeci alt hesabı salt okunur raporlama yetkisiyle tanımlandı." });
+  }
+
+  async function revokeAccountant(id) {
+    const response = await fetch(`/api/accounting/subaccounts?id=${encodeURIComponent(id)}`, { method: "DELETE", headers: { Authorization: "Bearer demo-token" } });
+    const result = await response.json();
+    if (!response.ok) return setFeedback({ type: "error", text: result.message });
+    await refreshAccountants();
+    setFeedback({ type: "success", text: "Muhasebeci alt hesabının erişimi kaldırıldı." });
+  }
+
   return (
     <div className="panel-shell">
       <aside className="panel-sidebar">
@@ -241,6 +273,18 @@ export function PanelApp() {
           <section className="kpi-grid compact"><article><span>Başarılı işlem</span><strong>{accounting.summary.total_successful_sales}</strong></article><article><span>Toplam komisyon</span><strong>{money.format(accounting.summary.total_deducted_commission)}</strong></article><article><span>Fatura bekleyen</span><strong>{accounting.summary.pending_customer_invoices}</strong></article></section>
           {accounting.summary.pending_customer_invoices ? <div className="invoice-warning"><strong>Eksik fatura uyarısı</strong><span>{accounting.summary.pending_customer_invoices} satış için müşteri satış faturası numarası bekleniyor.</span></div> : null}
           <section className="panel-card accounting-flow"><h2>Ay sonu belge akışı</h2><div><article><strong>1 · Müşteri satış faturası</strong><span>Galerinin sorumluluğunda; karttan çekilen brüt tutar üzerinden eşleştirilir.</span></article><article><strong>2 · EPK komisyon belgesi</strong><span>EPK payı ve yasal kesintiler sağlayıcı belgesiyle takip edilir.</span></article><article><strong>3 · TaşıtPOS hizmet faturası</strong><span>Platform payı ve yapılandırılmış KDV oranı ayrı belge kalemi olarak raporlanır.</span></article></div><small>Muhasebeci erişimi rapor ve belge indirme için salt okunur olarak desteklenir.</small></section>
+          <section className="panel-card collection-form">
+            <div className="panel-section-head"><div><span>4</span><h2>Muhasebeci alt hesabı</h2></div><p>Yalnızca rapor görüntüleme ve belge indirme yetkisi</p></div>
+            <form className="panel-form-grid" onSubmit={addAccountant}>
+              <label>Muhasebeci e-postası<input name="email" type="email" autoComplete="email" required /></label>
+              <label>T.C. kimlik numarası<input name="tckn" inputMode="numeric" minLength="11" maxLength="11" autoComplete="off" required /></label>
+              <button className="btn btn-primary" type="submit">Salt okunur hesap ekle</button>
+            </form>
+            <div className="accounting-flow">
+              <div>{accountants.length ? accountants.map((account) => <article key={account.id}><strong>{account.email}</strong><span>{account.identity_masked} · {account.status === "ACTIVE" ? "Aktif" : "Erişimi kaldırıldı"}</span>{account.status === "ACTIVE" ? <button className="btn btn-light" type="button" onClick={() => revokeAccountant(account.id)}>Erişimi kaldır</button> : null}</article>) : <small>Tanımlı muhasebeci alt hesabı bulunmuyor.</small>}</div>
+            </div>
+            <small>T.C. kimlik numarası açık biçimde saklanmaz; doğrulama sonrası yalnızca maskesi ve tek yönlü özeti kaydedilir.</small>
+          </section>
           <TransactionTable rows={accountingRows} onRefund={setRefundTarget} onInvoice={setInvoiceTarget} now={now} accounting />
         </> : null}
         {refundTarget ? <div className="refund-modal-backdrop" role="presentation"><form className="refund-modal" onSubmit={requestRefund}><div className="refund-modal-head"><div><small>YÜKSEK RİSKLİ İŞLEM</small><h2>İptal / iade talebi</h2></div><button type="button" onClick={() => setRefundTarget(null)}>×</button></div><p><strong>{refundTarget.plate}</strong> · {refundTarget.transaction_id}</p><label>İşlem tipi<select name="refund_type" defaultValue="FULL"><option value="FULL">Tam iade</option><option value="PARTIAL">Kısmi iade</option></select></label><label>İade edilecek brüt tutar<input name="amount" type="number" min="0.01" max={refundTarget.gross} step="0.01" defaultValue={refundTarget.gross} required /></label><label>İade nedeni<textarea name="reason" minLength="5" rows="3" placeholder="İade nedenini yazın" required /></label><label className="compliance-check"><input type="checkbox" required /><span>Tutarı ve işlemi kontrol ettim; EPK’ya iptal/iade talebi gönderilmesini onaylıyorum.</span></label><div className="auth-actions"><button className="btn btn-light" type="button" onClick={() => setRefundTarget(null)}>Vazgeç</button><button className="btn btn-primary" type="submit">Talebi onayla</button></div></form></div> : null}

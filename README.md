@@ -29,9 +29,11 @@ saklanmaz; gerçek para hareketi başlatılmaz.
 ## API taslakları
 
 - `POST /api/transactions/create-link`
+- `POST /transactions/create-link` (belgedeki dış API yolu)
 - `POST /api/transactions/refund`
 - `POST /api/webhooks/epk-payment-callback`
 - `POST /webhooks/epk-payment-callback` (EPK için dış callback adresi)
+- `POST /webhooks/epk-payout-callback` (imzalı hakediş/banka transfer teyidi)
 - `GET /payouts/summary` (dinamik hakediş KPI özeti)
 - `GET /payouts/transactions?page=1&limit=10` (sayfalı hakediş/dağıtım kayıtları)
 - `GET /api/payouts/summary` ve `GET /api/payouts/transactions` (panel karşılıkları)
@@ -41,6 +43,7 @@ saklanmaz; gerçek para hareketi başlatılmaz.
 - `GET /api/events` (panel anlık ödeme bildirim akışı)
 - `GET|POST /api/demo-payments/:transactionId` (yalnızca mock EPK hata/3DS senaryoları)
 - `GET /api/documents/:transactionId/access` (30 saniyelik tek kullanımlık evrak erişimi)
+- `GET|POST|DELETE /accounting/subaccounts` (salt okunur muhasebeci alt hesabı)
 
 Webhook, `EPK_WEBHOOK_SECRET` tanımlanmadan tüm çağrıları güvenli biçimde
 reddeder. Canlıya geçişte demo Bearer belirteci gerçek JWT doğrulamasıyla,
@@ -73,6 +76,8 @@ Webhook HMAC-SHA256 imzasını doğrular; kayıtlı EPK işlem numarası, brüt 
 12 taksit ve zaman damgası eşleşmeden işlemi başarılı saymaz. Başarılı bildirim
 işlemi idempotent biçimde günceller, toplamı brüt tutara eşit split-payment
 kaydını hazırlar ve panelin sunucu-gönderimli olay akışına anlık bildirim yollar.
+Hakediş kaydı yalnızca ayrı EPK payout webhook'undaki imza, işlem ve net tutar
+doğrulandıktan sonra `PAID` olur; transfer dekontu bundan önce üretilemez.
 
 İptal/iade servisi işlem sahipliğini, durumunu ve kalan iade edilebilir brüt
 tutarı doğrular. Aynı gün cut-off öncesinde `VOID`, sonrasında `REFUND` çağrısı
@@ -89,7 +94,8 @@ alanı içermez ve yalnızca bu durum geçişlerini simüle eder.
 AWS üretim güvenlik temeli [infra/aws](./infra/aws) altında bulunur: TLS 1.3
 ALB, AWS WAF yönetilen kuralları, public/private subnetler, NAT çıkışı, private
 Multi-AZ RDS PostgreSQL, KMS şifreli ve public erişimi kapalı S3, CloudTrail,
-GuardDuty ve SNS alarmı. Terraform dosyaları kendiliğinden uygulanmaz; canlı
+GuardDuty, e-posta/SMS SNS alarmı, özel subnetlerde çalışan ECS Fargate servisi,
+şifreli container logları ve WAF bot/rate-limit kuralları. Terraform dosyaları kendiliğinden uygulanmaz; canlı
 AWS hesabında plan/maliyet incelemesinden sonra dağıtılmalıdır.
 
 ## Çalıştırma

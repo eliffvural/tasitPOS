@@ -16,8 +16,11 @@ export async function POST(request) {
   catch (error) { return jsonError(503, error.message, "Kimlik doğrulama servisi yapılandırılmadı."); }
   if (!principal) return jsonError(401, "ERR_UNAUTHORIZED", "Geçerli Bearer erişim belirteci zorunludur.");
   if (principal.role !== "GALLERY") return jsonError(403, "ERR_FORBIDDEN", "Muhasebeci erişimiyle tahsilat oluşturulamaz.");
+  if (principal.status !== "ACTIVE") return jsonError(403, "ERR_MERCHANT_INACTIVE", "Yalnızca aktif üye işyerleri tahsilat oluşturabilir.");
 
-  const formData = await request.formData();
+  let formData;
+  try { formData = await request.formData(); }
+  catch { return jsonError(400, "ERR_INVALID_MULTIPART", "İstek multipart/form-data biçiminde gönderilmelidir."); }
   const document = formData.get("document");
   const input = {
     vehiclePlate: formData.get("vehicle_plate"),
@@ -28,6 +31,7 @@ export async function POST(request) {
     customerPhone: formData.get("customer_phone"),
     document,
     galleryId: principal.galleryId,
+    subMerchantId: principal.subMerchantId,
   };
   const validationError = validatePaymentInput(input);
   if (validationError) return jsonError(400, ...validationError);

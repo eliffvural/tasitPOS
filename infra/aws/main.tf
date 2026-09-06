@@ -174,6 +174,43 @@ resource "aws_wafv2_web_acl" "app" {
     }
   }
   rule {
+    name     = "AWSBotControlRules"
+    priority = 30
+    override_action { none {} }
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesBotControlRuleSet"
+        vendor_name = "AWS"
+        managed_rule_group_configs {
+          aws_managed_rules_bot_control_rule_set {
+            inspection_level = "COMMON"
+          }
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "bot-control-rules"
+      sampled_requests_enabled   = true
+    }
+  }
+  rule {
+    name     = "RateLimit"
+    priority = 40
+    action { block {} }
+    statement {
+      rate_based_statement {
+        limit              = 2000
+        aggregate_key_type = "IP"
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "rate-limit"
+      sampled_requests_enabled   = true
+    }
+  }
+  rule {
     name     = "AWSSqliRules"
     priority = 20
     override_action { none {} }
@@ -253,7 +290,104 @@ resource "aws_db_instance" "postgres" {
   final_snapshot_identifier   = "${local.name}-final"
 }
 
-resource "aws_ecs_cluster" "app" { name = local.name }
+resource "aws_ecs_cluster" "app" {
+  name = local.name
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "app" {
+  name              = "/ecs/${local.name}"
+  retention_in_days = 90
+}
+
+resource "aws_iam_role" "ecs_execution" {
+  name = "${local.name}-ecs-execution"
+  assume_role_policy = jsonencode({ Version = "2012-10-17", Statement = [{ Effect = "Allow", Principal = { Service = "ecs-tasks.amazonaws.com" }, Action = "sts:AssumeRole" }] })
+}
+resource "aws_iam_role_policy_attachment" "ecs_execution" {
+  role       = aws_iam_role.ecs_execution.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+resource "aws_iam_role_policy" "ecs_secrets" {
+  count = length(var.application_secret_arns) > 0 ? 1 : 0
+  name  = "read-application-secrets"
+  role  = aws_iam_role.ecs_execution.id
+  policy = jsonencode({ Version = "2012-10-17", Statement = [{ Effect = "Allow", Action = ["secretsmanager:GetSecretValue", "ssm:GetParameters", "kms:Decrypt"], Resource = concat(var.application_secret_arns, [aws_kms_key.data.arn]) }] })
+}
+
+resource "aws_iam_role" "ecs_task" {
+  name = "${local.name}-ecs-task"
+  assume_role_policy = jsonencode({ Version = "2012-10-17", Statement = [{ Effect = "Allow", Principal = { Service = "ecs-tasks.amazonaws.com" }, Action = "sts:AssumeRole" }] })
+}
+resource "aws_iam_role_policy" "ecs_documents" {
+  name = "private-document-access"
+  role = aws_iam_role.ecs_task.id
+  policy = jsonencode({ Version = "2012-10-17", Statement = [
+    { Effect = "Allow", Action = ["s3:GetObject", "s3:PutObject"], Resource = "${aws_s3_bucket.documents.arn}/*" },
+    { Effect = "Allow", Action = ["kms:Decrypt", "kms:Encrypt", "kms:GenerateDataKey"], Resource = aws_kms_key.data.arn }
+  ] })
+}
+
+resource "aws_ecs_task_definition" "app" {
+  family                   = local.name
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = var.task_cpu
+  memory                   = var.task_memory
+  execution_role_arn       = aws_iam_role.ecs_execution.arn
+  task_role_arn            = aws_iam_role.ecs_task.arn
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
+  container_definitions = jsonencode([{
+    name      = "tasitpos"
+    image     = var.container_image
+    essential = true
+    portMappings = [{ containerPort = 3000, hostPort = 3000, protocol = "tcp" }]
+    environment = [for name, value in merge({
+      NODE_ENV             = "production"
+      AWS_S3_BUCKET        = aws_s3_bucket.documents.id
+      AWS_KMS_KEY_ID       = aws_kms_key.data.arn
+      DOCUMENT_STORAGE_MODE = "s3"
+    }, var.application_environment) : { name = name, value = value }]
+    secrets = [for name, value_from in var.application_secrets : { name = name, valueFrom = value_from }]
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        awslogs-group         = aws_cloudwatch_log_group.app.name
+        awslogs-region        = var.aws_region
+        awslogs-stream-prefix = "app"
+      }
+    }
+    healthCheck = { command = ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""], interval = 30, timeout = 5, retries = 3, startPeriod = 30 }
+  }])
+}
+
+resource "aws_ecs_service" "app" {
+  name                               = local.name
+  cluster                            = aws_ecs_cluster.app.id
+  task_definition                    = aws_ecs_task_definition.app.arn
+  desired_count                      = var.desired_count
+  launch_type                        = "FARGATE"
+  health_check_grace_period_seconds  = 60
+  enable_execute_command             = false
+  deployment_circuit_breaker { enable = true, rollback = true }
+  network_configuration {
+    subnets          = values(aws_subnet.private)[*].id
+    security_groups  = [aws_security_group.app.id]
+    assign_public_ip = false
+  }
+  load_balancer {
+    target_group_arn = aws_lb_target_group.app.arn
+    container_name   = "tasitpos"
+    container_port   = 3000
+  }
+  depends_on = [aws_lb_listener.https, aws_iam_role_policy_attachment.ecs_execution]
+}
 resource "aws_guardduty_detector" "main" { enable = true }
 
 resource "aws_s3_bucket" "audit" { bucket = var.audit_bucket_name }
@@ -263,6 +397,14 @@ resource "aws_s3_bucket_public_access_block" "audit" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+resource "aws_s3_bucket_server_side_encryption_configuration" "audit" {
+  bucket = aws_s3_bucket.audit.id
+  rule { apply_server_side_encryption_by_default { sse_algorithm = "AES256" } }
+}
+resource "aws_s3_bucket_versioning" "audit" {
+  bucket = aws_s3_bucket.audit.id
+  versioning_configuration { status = "Enabled" }
 }
 resource "aws_s3_bucket_policy" "audit" {
   bucket = aws_s3_bucket.audit.id
@@ -285,6 +427,12 @@ resource "aws_sns_topic_subscription" "security_email" {
   topic_arn = aws_sns_topic.security.arn
   protocol  = "email"
   endpoint  = var.alarm_email
+}
+resource "aws_sns_topic_subscription" "security_sms" {
+  count     = var.alarm_phone_e164 == "" ? 0 : 1
+  topic_arn = aws_sns_topic.security.arn
+  protocol  = "sms"
+  endpoint  = var.alarm_phone_e164
 }
 resource "aws_cloudwatch_event_rule" "guardduty" {
   name          = "${local.name}-guardduty"
